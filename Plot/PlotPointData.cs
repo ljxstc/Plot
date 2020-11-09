@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Plot
+{
+    static class PlotPointData
+    {
+        /// <summary>
+        /// 原始数据坐标
+        /// </summary>
+        public static double OriX { get; set; }
+        public static double OriY { get; set; }
+        /// <summary>
+        /// 鼠标指针坐标
+        /// </summary>
+        public static double CurX { get; set; }
+        public static double CurY { get; set; }
+        /// <summary>
+        /// 样板曲线坐标
+        /// </summary>
+        public static double StdX { get; set; }
+        public static double StdY { get; set; }
+
+        public static bool OutValue  { get; set; }
+    }
+}

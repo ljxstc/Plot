@@ -41,6 +41,8 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
             // 
             // pictureBox1
             // 
@@ -64,6 +66,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "主界面";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

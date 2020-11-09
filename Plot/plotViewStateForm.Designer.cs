@@ -42,6 +42,7 @@
             this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
             this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.plotView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plotView1_MouseDown);
             // 
             // plotViewStateForm
             // 

@@ -37,12 +37,15 @@
             this.plotView1.Location = new System.Drawing.Point(0, 0);
             this.plotView1.Name = "plotView1";
             this.plotView1.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotView1.Size = new System.Drawing.Size(640, 320);
+            this.plotView1.Size = new System.Drawing.Size(800, 600);
             this.plotView1.TabIndex = 0;
             this.plotView1.Text = "plotView1";
             this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
             this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.plotView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plotView1_MouseDown);
+            this.plotView1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plotView1_MouseMove);
+            this.plotView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.plotView1_MouseUp);
             // 
             // plotViewForm
             // 
@@ -58,8 +61,7 @@
             this.Opacity = 0.7D;
             this.Text = "plotViewForm";
             this.TopMost = true;
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plotViewForm_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plotViewForm_MouseMove);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.plotViewForm_FormClosed);
             this.ResumeLayout(false);
 
         }
