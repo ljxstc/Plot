@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -24,5 +25,13 @@ namespace Plot
         public static double StdY { get; set; }
 
         public static bool OutValue  { get; set; }
+        /// <summary>
+        /// 主界面启动坐标
+        /// </summary>
+        public static Point screenPoint { get; set; }
+        /// <summary>
+        /// 载入文件路径
+        /// </summary>
+        public static string fileName { get; set; }
     }
 }

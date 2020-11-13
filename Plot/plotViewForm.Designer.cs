@@ -61,7 +61,6 @@
             this.Opacity = 0.7D;
             this.Text = "plotViewForm";
             this.TopMost = true;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.plotViewForm_FormClosed);
             this.ResumeLayout(false);
 
         }

@@ -9,11 +9,22 @@ C/S结构考虑暂时不设置服务器，所有功能通过客户端实现。
 	3.C#编写业务逻辑。  
 ## 3 程序执行流程
 	1.载入原始数据
-		1.1设置原始数据载入按钮，提交一些原始数据
-		1.2前端设置load按钮，打开文件夹选择压力恢复数据文件（.xls）
-			压力恢复数据应设置为标准格式，数据分两列，第一列为时间，第二列为该时刻压力，即P-T数据
-		1.3将数据读取写入集合（或矩阵）对象中，计算压力差ΔP、时间差Δt
-			考察程序运行时间及复杂度，可使用内置的Math API计算，或调用Matlab的动态链接库进行混合编程，实现数组计算
+		1.1前端设置打开文件按钮，打开文件夹选择压力恢复数据文件（.xls/.xlsx）
+			压力恢复数据应设置为标准格式，数据分两列，第一列为时间，第二列为该时刻压力，即P-T数据 	
+		1.2调用ExcelDataReader包，读取Excel文件保存至DataSet  
+			调用方法 ExcelProcess.ExcelToDataSet(string excelPath)  
+		1.3将DataSet中数据存入动态数组ArrayList，数据类型为字符串string  	
+			调用方法 ExcelProcess.DataSetToArrayList(DataSet dt)
+		1.4将动态数组拆分成两组数组，分别为压力press和时间time
+			调用方法 PressCal.PressAndTime( ArrayList arrayList ,ref double[] time, ref double[] press)
+				使用引用参数ref传值
+		1.5计算原始压力的压力差
+			调用方法 PressCal.ToDelta(double[] press)
+		1.6计算压力差的导数
+			调用方法 ToDerP(double[] deltaPress,double[] t)
+				由于C#没有计算导数的函数，因此采用matlab执行混合编译
+				matlab编写函数Derivative(t1,deltaP)，生成dll动态链接库
+				C#导入MWArray包用于矩阵计算			
 	2.绘制原始数据的压力差-时间曲线
 		调用oxyPlot（Nuget包），绘制曲线，要求鼠标点击曲线上的任意一点，给出点的横纵坐标值。
 	3.选择样板曲线，并绘制

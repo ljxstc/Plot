@@ -13,24 +13,25 @@ using System.Windows.Forms;
 using OxyPlot.Legends;
 using HZH_Controls.Forms;
 using HZH_Controls;
+using System.Collections;
 
 namespace Plot
 {
     public partial class plotViewForm : Form
     {
 
-        private PlotModel myModel = new PlotModel { Title = "Example 1", Background = OxyColors.Transparent };
-        public plotViewForm()
+        
+
+        [Obsolete]
+        public plotViewForm(string fileName)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.Manual;
-
-
-            myModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
-
-           
-            this.plotView1.Model = myModel;
-
+            DataSet dt = ExcelProcess.ExcelToDataSet(fileName);
+            //string类型动态数组
+            ArrayList arrayList = ExcelProcess.DataSetToArrayList(dt);
+            PlotModel plotModel = PlotModelExamples.PlotPressAndTime(arrayList);
+            this.plotView1.Model = plotModel;
         }
 
 
@@ -60,11 +61,11 @@ namespace Plot
             {
                 isDrag = false;
                 //追踪点击事件，获取坐标值
-                myModel.TrackerChanged += (s, e1) =>
+                this.plotView1.Model.TrackerChanged += (s, e1) =>
                 {
-                    myModel.Subtitle = e1.HitResult != null ? "Tracker item index = " + e1.HitResult.DataPoint: "Not tracking";
+                    this.plotView1.Model.Subtitle = e1.HitResult != null ? "Tracker item index = " + e1.HitResult.DataPoint: "Not tracking";
                     //不刷新数据
-                    myModel.InvalidatePlot(false);
+                    this.plotView1.Model.InvalidatePlot(false);
                     //保存原始数据
                     PlotPointData.OriX = e1.HitResult.DataPoint.X;
                     PlotPointData.OriY = e1.HitResult.DataPoint.Y;
@@ -127,10 +128,7 @@ namespace Plot
             }
         }
 
-        private void plotViewForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            PlotPointData.OutValue = true;
-        }
+       
     }
     
 }
