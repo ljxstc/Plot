@@ -316,6 +316,7 @@
             this.ucCombox1.TabIndex = 22;
             this.ucCombox1.TextValue = null;
             this.ucCombox1.TriangleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
+            this.ucCombox1.SelectedChangedEvent += new System.EventHandler(this.ucCombox1_SelectedChangedEvent);
             // 
             // MainForm
             // 

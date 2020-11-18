@@ -5,6 +5,7 @@ using OxyPlot.Series;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -12,6 +13,92 @@ namespace Plot
 {
     class PlotModelExamples
     {
+        /// <summary>
+        /// 载入多组数据，绘制曲线
+        /// </summary>
+        /// <param name="dataPath">路径名字符串数组</param>
+        /// <param name="colors">曲线颜色字符串数组</param>
+        /// <param name="bw">多线程加载</param>
+        /// <returns></returns>
+        public static PlotModel multidataLine(string[] dataPath, OxyColor[] colors, BackgroundWorker bw)
+        {
+            List<List<LineSeries>> lists = new List<List<LineSeries>>();
+            PlotModel m = new PlotModel();
+            for (int i = 0; i < dataPath.Length; i++)
+            {
+                lists.Add(dataLine(dataPath[i], colors[i]));
+                int percentage = 100 * (i + 1) / dataPath.Length;
+                bw.ReportProgress(percentage);
+
+            }
+            foreach (List<LineSeries> list in lists)
+            {
+                foreach (LineSeries line in list)
+                {
+                    m.Series.Add(line);
+
+                }
+
+            }
+            m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
+            m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
+            return m;
+        }
+
+        /// <summary>
+        /// 载入单组数据绘制曲线
+        /// </summary>
+        /// <param name="dataPath"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static List<LineSeries> dataLine(string dataPath, OxyColor color)
+        {
+            CSV data1 = new CSV(dataPath);
+            int column = data1.ColumnCount;
+            int row = data1.RowCount;
+            double[] t = new double[row];
+            double[] p = new double[row];
+            double[] pd = new double[row];
+
+            for (int j = 0; j < row; j++)
+            {
+                t[j] = Convert.ToDouble(data1.GetData(j, 0));
+            }
+            for (int j = 0; j < row; j++)
+            {
+                p[j] = Convert.ToDouble(data1.GetData(j, 1));
+            }
+            for (int j = 0; j < row; j++)
+            {
+                pd[j] = Convert.ToDouble(data1.GetData(j, 2));
+            }
+
+            var s1 = new LineSeries
+            {
+                CanTrackerInterpolatePoints = true,
+                Color = color
+            };
+            for (int i = 0; i < row; i++)
+            {
+                s1.Points.Add(new DataPoint(t[i], p[i]));
+            }
+
+            var s2 = new LineSeries
+            {
+                CanTrackerInterpolatePoints = true,
+                Color = color
+            };
+
+            for (int i = 0; i < row; i++)
+            {
+                s2.Points.Add(new DataPoint(t[i], pd[i]));
+            }
+            List<LineSeries> list = new List<LineSeries>();
+            list.Add(s1);
+            list.Add(s2);
+            return list;
+        }
+
         public static PlotModel AmdahlsLaw()
         {
             var model = new PlotModel { Title = "Amdahl's law" };
@@ -22,7 +109,7 @@ namespace Plot
             };
             model.Legends.Add(l);
 
-            // http://en.wikipedia.org/wiki/Amdahl's_law
+            
             Func<double, int, double> maxSpeedup = (p, n) => 1.0 / ((1.0 - p) + (double)p / n);
             Func<double, LineSeries> createSpeedupCurve = p =>
             {
@@ -166,5 +253,7 @@ namespace Plot
             //};
             return model;
         }
+
+
     }
 }

@@ -14,33 +14,35 @@ namespace Plot
 {
     public partial class plotViewStateForm : Form
     {
-        
-        
-        
+
+        public PlotModel plotModel = new PlotModel();
+        public int percent { get; set; }
+
         public plotViewStateForm(int selectIndex)
         {
             InitializeComponent();
-            PlotModel model = new PlotModel();
+            
+            
             if (selectIndex == 0)
             {
-                model.Series.Add(new FunctionSeries(Math.Sin, 0, 10, 0.1, "sin(x)"));
-                model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
-                model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
-                this.plotView1.Model = model;
+                plotModel.Series.Add(new FunctionSeries(Math.Sin, 0, 10, 0.1, "sin(x)"));
+                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
+                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
+                this.plotView1.Model = plotModel;
             }
             else if (selectIndex == 1)
             {
-                model.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
-                model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
-                model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
-                this.plotView1.Model = model;
+                plotModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
+                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
+                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
+                this.plotView1.Model = plotModel;
             }
             else if (selectIndex == 2)
             {
-                model.Series.Add(new FunctionSeries(Math.Tan, 0, 10, 0.1, "tan(x)"));
-                model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
-                model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
-                this.plotView1.Model = model;
+                plotModel.Series.Add(new FunctionSeries(Math.Tan, 0, 10, 0.1, "tan(x)"));
+                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
+                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
+                this.plotView1.Model = plotModel;
             }
             
         }
@@ -60,13 +62,15 @@ namespace Plot
                 PlotPointData.StdX = e1.HitResult.DataPoint.X;
                 PlotPointData.StdY = e1.HitResult.DataPoint.Y;
 
-                this.Close();
+               this.Close();
                
             };
 
            
         }
 
-        
+      
+
+       
     }
 }

@@ -21,7 +21,7 @@ namespace Plot
         [DllImport("User32")]
         public extern static void SetCursorPos(int x, int y);
 
-        
+        private static Form frm1;
         
         public MainForm()
 
@@ -53,8 +53,8 @@ namespace Plot
                 }
             }
             #endregion
+            pictureBox1.SendToBack();
 
-            
 
 
             #region 设置显示结果控件隐藏
@@ -75,8 +75,7 @@ namespace Plot
             lstCom.Add(new KeyValuePair<string, string>("3", "复合地层球形流-径向流样板曲线"));
             this.ucCombox1.Source = lstCom;
             this.ucCombox1.SelectedIndex = 0;
-
-            Form frm1 = new plotViewStateForm(this.ucCombox1.SelectedIndex);
+            frm1 = new plotViewStateForm(this.ucCombox1.SelectedIndex);
             //启动固定位置子窗体
             frm1.MdiParent = this;
             frm1.FormClosed += FRM1_FormClosed;
@@ -118,6 +117,7 @@ namespace Plot
 
         }
 
+        [Obsolete]
         private void openFile_MouseClick(object sender, MouseEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -138,10 +138,35 @@ namespace Plot
                 frm2.Location = plotPoint;
                 frm2.Show();
                 frm2.BringToFront();
-                pictureBox1.SendToBack();
+                
                 #endregion
 
             }
         }
+
+       
+
+        private void ucCombox1_SelectedChangedEvent(object sender, EventArgs e)
+        {
+            if (frm1 != null)
+            {
+                frm1.Dispose();
+                frm1 = new plotViewStateForm(this.ucCombox1.SelectedIndex);
+                frm1.MdiParent = this;
+                frm1.FormClosed += FRM1_FormClosed;
+                frm1.Show();
+            }
+            else
+            {
+                frm1 = new plotViewStateForm(this.ucCombox1.SelectedIndex);
+                frm1.MdiParent = this;
+                frm1.FormClosed += FRM1_FormClosed;
+                frm1.Show();
+            }
+                       
+            
+        }
+
+       
     }
 }

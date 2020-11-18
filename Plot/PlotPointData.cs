@@ -33,5 +33,18 @@ namespace Plot
         /// 载入文件路径
         /// </summary>
         public static string fileName { get; set; }
+
+        public static double q { get; set; }
+        public static double b { get; set; }
+        public static double ct { get; set; }
+
+        public static double h { get; set; }
+
+        public static double rw { get; set; }
+
+        public static double u { get; set; }
+
+        public static double phi { get; set; }
+
     }
 }

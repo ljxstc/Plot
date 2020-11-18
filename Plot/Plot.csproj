@@ -87,6 +87,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CSV.cs" />
+    <Compile Include="defaultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="defaultForm.Designer.cs">
+      <DependentUpon>defaultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExcelProcess.cs" />
     <Compile Include="PlotModelExamples.cs" />
     <Compile Include="PlotPointData.cs" />
@@ -111,6 +118,9 @@
     <Compile Include="PressCal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="defaultForm.resx">
+      <DependentUpon>defaultForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

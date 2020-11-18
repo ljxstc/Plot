@@ -17,7 +17,7 @@ namespace Plot
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MyapplicationContext()) ;
-            Application.Run(new MainForm());
+            Application.Run(new defaultForm());
         }
     }
 
