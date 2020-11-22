@@ -8,11 +8,136 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Plot
 {
     class PlotModelExamples
     {
+        /// <summary>
+        /// 样板曲线事件，用于获取点击结果
+        /// </summary>
+        /// <param name="lists"></param>
+        /// <param name="model"></param>
+        public static void plotEvent(List<List<LineSeries>> lists, PlotModel model)
+        {
+            //两条数据
+            List<LineSeries> listEvent = new List<LineSeries>(); 
+            foreach (List<LineSeries> listLine in lists)
+            {  
+                //实际上就是两组数
+                for (int j = 0; j < listLine.Count(); j++)
+                {
+                    listEvent.Add(listLine[j]);  //把所有的数都加到listEvent里了
+                }
+            }
+
+
+            #region 绑定鼠标事件
+            listEvent[0].MouseDown += (s, e) =>
+            {
+                model.InvalidatePlot(false);
+                PlotPointData.name = 0;
+                
+            };
+            listEvent[1].MouseDown += (s, e) =>
+            {
+               
+                PlotPointData.name = 1;
+            };
+            listEvent[2].MouseDown += (s, e) =>
+            {
+               
+                PlotPointData.name = 2;
+            };
+            listEvent[3].MouseDown += (s, e) =>
+            {
+               
+                PlotPointData.name = 3;
+            };
+            listEvent[4].MouseDown += (s, e) =>
+            {
+               
+                PlotPointData.name = 4;
+            };
+            listEvent[5].MouseDown += (s, e) =>
+            {
+               
+                PlotPointData.name = 5;
+            };
+            listEvent[6].MouseDown += (s, e) =>
+            {
+               
+                PlotPointData.name = 6;
+            };
+            listEvent[7].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 7;
+            };
+            listEvent[8].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 8;
+            };
+            listEvent[9].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 9;
+            };
+            listEvent[10].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 10;
+            };
+            listEvent[11].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 11;
+            };
+            listEvent[12].MouseDown += (s, e) =>
+            {
+              
+                PlotPointData.name = 12;
+            };
+            listEvent[13].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 13;
+            };
+            listEvent[14].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 14;
+            };
+            listEvent[15].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 15;
+            };
+            listEvent[16].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 16;
+            };
+            listEvent[17].MouseDown += (s, e) =>
+            {
+             
+                PlotPointData.name = 17;
+            };
+
+            #endregion
+
+            //绑定模型追踪事件
+            model.TrackerChanged += (s, e) =>
+            {
+                model.InvalidatePlot(false);
+                PlotPointData.StdX = e.HitResult != null ? e.HitResult.DataPoint.X : 0.0;
+                PlotPointData.StdY = e.HitResult != null ? e.HitResult.DataPoint.Y : 0.0;
+                PlotPointData.OutValue = true;
+            };
+
+        }
         /// <summary>
         /// 载入多组数据，绘制曲线
         /// </summary>
@@ -20,23 +145,27 @@ namespace Plot
         /// <param name="colors">曲线颜色字符串数组</param>
         /// <param name="bw">多线程加载</param>
         /// <returns></returns>
-        public static PlotModel multidataLine(string[] dataPath, OxyColor[] colors, BackgroundWorker bw)
+        public static PlotModel multidataLine(string[] dataPath, OxyColor[] colors, BackgroundWorker bw, ref List<List<LineSeries>> lists)
         {
-            List<List<LineSeries>> lists = new List<List<LineSeries>>();
+            lists = new List<List<LineSeries>>();
             PlotModel m = new PlotModel();
             for (int i = 0; i < dataPath.Length; i++)
             {
                 lists.Add(dataLine(dataPath[i], colors[i]));
+                
+                //进度条，与运算无关
                 int percentage = 100 * (i + 1) / dataPath.Length;
                 bw.ReportProgress(percentage);
 
             }
+            ////要标记曲线
+         
             foreach (List<LineSeries> list in lists)
             {
+
                 foreach (LineSeries line in list)
                 {
                     m.Series.Add(line);
-
                 }
 
             }
@@ -94,6 +223,7 @@ namespace Plot
                 s2.Points.Add(new DataPoint(t[i], pd[i]));
             }
             List<LineSeries> list = new List<LineSeries>();
+
             list.Add(s1);
             list.Add(s2);
             return list;

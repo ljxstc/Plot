@@ -58,14 +58,26 @@ namespace Plot
 
 
             #region 设置显示结果控件隐藏
-            textBoxTransparent1.Hide();
-            textBoxTransparent2.Hide();
-            textBoxTransparent3.Hide();
-            textBoxTransparent4.Hide();
+            label1.Hide();
+            label2.Hide();
+            label3.Hide();
+            label4.Hide();
+            label5.Hide();
+            label6.Hide();
+            label7.Hide();
+            label8.Hide();
+
             deltaP.Hide();
             deltaT.Hide();
             PD.Hide();
             Td.Hide();
+            name.Hide();
+            kh.Hide();
+            S.Hide();
+            c.Hide();
+
+            oriData.Hide();
+            ReverseBox.Hide();
             #endregion
 
             //设置图标
@@ -88,19 +100,38 @@ namespace Plot
         private void FRM1_FormClosed(object sender, FormClosedEventArgs e)
         {
             #region 主窗体控件显示
-            textBoxTransparent1.Show();
-            textBoxTransparent2.Show();
-            textBoxTransparent3.Show();
-            textBoxTransparent4.Show();
+            label1.Show();
+            label2.Show();
+            label3.Show();
+            label4.Show();
+            label5.Show();
+            label6.Show();
+            label7.Show();
+            label8.Show();
+
             deltaP.Show();
             deltaT.Show();
             PD.Show();
             Td.Show();
+            name.Show();
+            kh.Show();
+            S.Show();
+            c.Show();
+
+            ReverseBox.Show();
+            oriData.Show();
             #endregion
+            //原始数据显示
             deltaP.Text = PlotPointData.OriX.ToString("0.00");
             deltaT.Text = PlotPointData.OriY.ToString("0.00");
             PD.Text = PlotPointData.StdX.ToString("0.00");
             Td.Text = PlotPointData.StdY.ToString("0.00");
+            name.Text = PlotPointData.name.ToString();
+            //计算结果显示 public static double[] KhCal(double p, double pd,double t, double td, int name, double q, double b, double u )
+            double[] result = PressCal.KhCal(PlotPointData.OriY,PlotPointData.StdY,PlotPointData.OriX,PlotPointData.StdX,PlotPointData.name,PlotPointData.q,PlotPointData.b,PlotPointData.u);
+            kh.Text = result[0].ToString("0.00");
+            c.Text = result[1].ToString("0.00");
+            S.Text = result[2].ToString("0.00");
         }
 
         Point mPoint = new Point();
@@ -117,32 +148,6 @@ namespace Plot
 
         }
 
-        [Obsolete]
-        private void openFile_MouseClick(object sender, MouseEventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = "D:\\压力反演";
-            ofd.Filter = "表格文件|*.xlsx|表格文件|*.xls";
-            //控制对话框在关闭之前是否恢复当前目录
-            ofd.RestoreDirectory = true;
-            ofd.FilterIndex = 1;
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                #region 启动可活动图像窗体
-                Form frm2 = new plotViewForm(ofd.FileName);
-                //设置起始坐标
-                Point plotPoint = new Point();
-                plotPoint.X = PlotPointData.screenPoint.X + 120;
-                plotPoint.Y = PlotPointData.screenPoint.Y + 183;
-                frm2.StartPosition = FormStartPosition.Manual;
-                frm2.Location = plotPoint;
-                frm2.Show();
-                frm2.BringToFront();
-                
-                #endregion
-
-            }
-        }
 
        
 
@@ -165,6 +170,33 @@ namespace Plot
             }
                        
             
+        }
+
+        [Obsolete]
+        private void openFile_BtnClick(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = "D:\\压力反演";
+            ofd.Filter = "表格文件|*.xlsx|表格文件|*.xls";
+            //控制对话框在关闭之前是否恢复当前目录
+            ofd.RestoreDirectory = true;
+            ofd.FilterIndex = 1;
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                #region 启动可活动图像窗体
+                Form frm2 = new plotViewForm(ofd.FileName);
+                //设置起始坐标
+                Point plotPoint = new Point();
+                plotPoint.X = PlotPointData.screenPoint.X + 120;
+                plotPoint.Y = PlotPointData.screenPoint.Y + 183;
+                frm2.StartPosition = FormStartPosition.Manual;
+                frm2.Location = plotPoint;
+                frm2.Show();
+                frm2.BringToFront();
+
+                #endregion
+
+            }
         }
 
        

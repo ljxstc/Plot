@@ -54,16 +54,12 @@ namespace Plot
         [Obsolete]
         private void plotView1_MouseDown(object sender, MouseEventArgs e)
         {
-
-
-
             if (chosePoint1 == true)
             {
                 isDrag = false;
                 //追踪点击事件，获取坐标值
                 this.plotView1.Model.TrackerChanged += (s, e1) =>
                 {
-                    this.plotView1.Model.Subtitle = e1.HitResult != null ? "Tracker item index = " + e1.HitResult.DataPoint: "Not tracking";
                     //不刷新数据
                     this.plotView1.Model.InvalidatePlot(false);
                     //保存原始数据

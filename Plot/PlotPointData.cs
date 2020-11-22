@@ -23,7 +23,10 @@ namespace Plot
         /// </summary>
         public static double StdX { get; set; }
         public static double StdY { get; set; }
-
+        /// <summary>
+        /// 找到对应的曲线名
+        /// </summary>
+        public static int name { get; set; }
         public static bool OutValue  { get; set; }
         /// <summary>
         /// 主界面启动坐标
@@ -34,6 +37,7 @@ namespace Plot
         /// </summary>
         public static string fileName { get; set; }
 
+        #region 初始参数
         public static double q { get; set; }
         public static double b { get; set; }
         public static double ct { get; set; }
@@ -45,6 +49,6 @@ namespace Plot
         public static double u { get; set; }
 
         public static double phi { get; set; }
-
+        #endregion
     }
 }

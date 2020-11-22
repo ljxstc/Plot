@@ -10,11 +10,12 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Plot;
 
 namespace Plot
 {
     /// <summary>
-    /// 原始压力数据计算
+    /// 压力数据计算
     /// </summary>
     class PressCal
     {
@@ -70,6 +71,117 @@ namespace Plot
             double[,] derPress1 = new double[deltaPress.Length-1,1];
             derPress1 = (double[,])derPress.ToArray();
             return derPress1;
+        }
+
+        /// <summary>
+        /// 计算反演结果
+        /// </summary>
+        /// <param name="p">压力</param>
+        /// <param name="pd">样板压力</param>
+        /// <param name="t">时间</param>
+        /// <param name="td">样板时间</param>
+        /// <param name="name">曲线名</param>
+        /// <param name="q">流量</param>
+        /// <param name="b">地层体积系数</param>
+        /// <param name="u">粘度</param>
+        /// <returns></returns>
+        public static double[] KhCal(double p, double pd,double t, double td, int name, double q, double b, double u )
+        {
+            //pd / deltaP
+            double pdP = pd / p;
+            //td / deltaT
+            double tdT = td / t;
+            //cd和S
+            double[] cdS = PressCal.cdS(name);
+            //渗透率kh
+            double kh = 141.2 * q * b * u * pdP;
+            //管储系数
+            double c = 0.000295 * kh / (u * tdT);
+            //表皮系数
+            double s = cdS[1];
+            double[] result = new double[3];
+            result[0] = kh;
+            result[1] = c;
+            result[2] = s;
+            return result;
+
+        }
+
+        /// <summary>
+        /// 通过选择的曲线得到Cd和S的值
+        /// </summary>
+        /// <param name="name">选择曲线名</param>
+        /// <returns></returns>
+        public static double[] cdS(int name)
+        {
+            double cd, s;
+            double [] cdS = new double[2];
+            if (name ==0 | name == 1)
+            {
+                cd = 1;
+                s = 1;
+                cdS[0] = cd;
+                cdS[1] = s;
+            }
+            else if (name == 2 | name == 3)
+            {
+                cd = 1;
+                s = 10;
+                cdS[0] = cd;
+                cdS[1] = s;
+            }
+            else if (name == 4 | name == 5)
+            {
+                cd = 1;
+                s = 20;
+                cdS[0] = cd;
+                cdS[1] = s;
+            }
+            else if (name == 6 | name == 7)
+            {
+                cd = 10;
+                s = 1;
+                cdS[0] = cd;
+                cdS[1] = s;
+            }
+            else if (name == 8 | name == 9)
+            {
+                cd = 10;
+                s = 10;
+                cdS[0] = cd;
+                cdS[1] = s;
+            }
+            else if (name == 10 | name == 11)
+            {
+                cd = 10;
+                s = 20;
+                cdS[0] = cd;
+                cdS[1] = s;
+            }
+            else if (name == 12 | name == 13)
+            {
+                cd = 100;
+                s = 1;
+                cdS[0] = cd;
+                cdS[1] = s;
+            }
+            else if (name == 14 | name == 15)
+            {
+                cd = 100;
+                s = 10;
+                cdS[0] = cd;
+                cdS[1] = s;
+            }
+            else if (name == 16 | name == 17)
+            {
+                cd = 100;
+                s = 20;
+                cdS[0] = cd;
+                cdS[1] = s;
+            }
+            return cdS;
+            
+
         }
 
     }

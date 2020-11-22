@@ -16,61 +16,137 @@ namespace Plot
     {
 
         public PlotModel plotModel = new PlotModel();
-        public int percent { get; set; }
+        private int index;
 
         public plotViewStateForm(int selectIndex)
         {
             InitializeComponent();
-            
-            
-            if (selectIndex == 0)
-            {
-                plotModel.Series.Add(new FunctionSeries(Math.Sin, 0, 10, 0.1, "sin(x)"));
-                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
-                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
-                this.plotView1.Model = plotModel;
-            }
-            else if (selectIndex == 1)
-            {
-                plotModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
-                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
-                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
-                this.plotView1.Model = plotModel;
-            }
-            else if (selectIndex == 2)
-            {
-                plotModel.Series.Add(new FunctionSeries(Math.Tan, 0, 10, 0.1, "tan(x)"));
-                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
-                plotModel.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
-                this.plotView1.Model = plotModel;
-            }
-            
+            CheckForIllegalCrossThreadCalls = false;
+            index = selectIndex;
+            backgroundWorker1.RunWorkerAsync();
+ 
         }
 
 
-        [Obsolete]
-        private void plotView1_MouseDown(object sender, MouseEventArgs e)
+       
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-
-            //追踪点击事件，获取坐标值
-            this.plotView1.Model.TrackerChanged += (s, e1) =>
+            List<List<LineSeries>> lists = new List<List<LineSeries>>();
+            
+            if (index == 0)
             {
-                this.plotView1.Model.Subtitle = e1.HitResult != null ? "Tracker item index = " + e1.HitResult.DataPoint : "Not tracking";
-                //不刷新数据
-                this.plotView1.Model.InvalidatePlot(false);
-                //保存原始数据
-                PlotPointData.StdX = e1.HitResult.DataPoint.X;
-                PlotPointData.StdY = e1.HitResult.DataPoint.Y;
-
-               this.Close();
-               
+                string[] dataPath = { "D:\\压力反演\\PC=1S=1.csv" ,
+                "D:\\压力反演\\PC=1S=10.csv",
+                "D:\\压力反演\\PC=1S=20.csv",
+                "D:\\压力反演\\PC=10S=1.csv",
+                "D:\\压力反演\\PC=10S=10.csv",
+                "D:\\压力反演\\PC=10S=20.csv",
+                "D:\\压力反演\\PC=100S=1.csv",
+                "D:\\压力反演\\PC=100S=10.csv",
+                "D:\\压力反演\\PC=100S=20.csv"};
+                OxyColor[] colors = {OxyColors.Red,
+                OxyColors.Blue,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic};
+                plotModel = PlotModelExamples.multidataLine(dataPath, colors, backgroundWorker1, ref lists);
+                ucProcessLine1.Hide();
+                label1.Hide();
+                PlotModelExamples.plotEvent(lists, plotModel);
+                this.plotView1.Model = plotModel;
+                
+                
+            }
+            else if (index == 1)
+            {
+                string[] dataPath = { "D:\\压力反演\\PC=1S=1.csv"
             };
+                OxyColor[] colors = {OxyColors.Red,
+                OxyColors.Blue,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic};
+                //List<LineSeries> list = TrackerExamples.dataLine(dataPath, OxyColors.Red);
+                //PlotModel plot1 = TrackerExamples.plotCurveLine(list);
+                plotModel = PlotModelExamples.multidataLine(dataPath, colors, backgroundWorker1,ref lists);
+                ucProcessLine1.Hide();
+                label1.Hide();
+                PlotModelExamples.plotEvent(lists, plotModel);
+                this.plotView1.Model = plotModel;
 
+
+            }
+            else if (index == 2)
+            {
+                string[] dataPath = {
+                "D:\\压力反演\\PC=1S=10.csv"};
+                OxyColor[] colors = {OxyColors.Red,
+                OxyColors.Blue,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic,
+                OxyColors.Automatic};
+                //List<LineSeries> list = TrackerExamples.dataLine(dataPath, OxyColors.Red);
+                //PlotModel plot1 = TrackerExamples.plotCurveLine(list);
+                plotModel = PlotModelExamples.multidataLine(dataPath, colors, backgroundWorker1, ref lists);
+                ucProcessLine1.Hide();
+                label1.Hide();
+                PlotModelExamples.plotEvent(lists, plotModel);
+                this.plotView1.Model = plotModel;
+            }
+
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            ucProcessLine1.Value = e.ProgressPercentage;
+        }
+
+        private void plotView1_MouseUp(object sender, MouseEventArgs e)
+        {
            
         }
 
-      
+        private void plotView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (PlotPointData.OutValue == true && PlotPointData.StdX != 0.0)
+            {
+                MessageBox.Show("已获取曲线值");
+                backgroundWorker1.CancelAsync();
+                backgroundWorker1.Dispose();
+                plotView1.Dispose();
+                this.Close();
+            }
+        }
 
-       
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                MessageBox.Show("取消成功");
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("线程工作异常：" + e.Error.ToString());
+            }
+            
+        }
     }
 }

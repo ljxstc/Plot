@@ -120,4 +120,23 @@
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="openFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAL5JREFUaEPt2MENwjAUg+HeWYA5skAnyCKM0hWYgYFYJuFF9Q0uPAniqv8n5ejI
+        JuqFBQCAo+m9l9baLXGuumK+GLHGSbMZE0Xu6pQyXkZXzRVFnuqUMn1IdLhEiW2vk5ceMoK6w0JqSISq
+        8jayQ6xeYzj9kBrnYXaq6uG44hn52H+FIcrbYIjyNhiivA2GKG+DIcrbYIjyNhiivA2GKG/j3EMiV/a4
+        laJ634ngGr/Cp79l/n5GF9UCAADvluUFaJZiLSZ4URoAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="openFile.ImageFontIcons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAL5JREFUaEPt2MENwjAUg+HeWYA5skAnyCKM0hWYgYFYJuFF9Q0uPAniqv8n5ejI
+        JuqFBQCAo+m9l9baLXGuumK+GLHGSbMZE0Xu6pQyXkZXzRVFnuqUMn1IdLhEiW2vk5ceMoK6w0JqSISq
+        8jayQ6xeYzj9kBrnYXaq6uG44hn52H+FIcrbYIjyNhiivA2GKG+DIcrbYIjyNhiivA2GKG/j3EMiV/a4
+        laJ634ngGr/Cp79l/n5GF9UCAADvluUFaJZiLSZ4URoAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>
