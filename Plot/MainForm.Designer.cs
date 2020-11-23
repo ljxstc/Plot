@@ -51,6 +51,7 @@
             this.kh = new HZH_Controls.Controls.TextBoxEx();
             this.label6 = new System.Windows.Forms.Label();
             this.openFile = new HZH_Controls.Controls.UCBtnImg();
+            this.back = new HZH_Controls.Controls.UCBtnImg();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.oriData.SuspendLayout();
             this.ReverseBox.SuspendLayout();
@@ -479,12 +480,45 @@
             this.openFile.TipsText = "打开文件";
             this.openFile.BtnClick += new System.EventHandler(this.openFile_BtnClick);
             // 
+            // back
+            // 
+            this.back.BackColor = System.Drawing.Color.White;
+            this.back.BtnBackColor = System.Drawing.Color.White;
+            this.back.BtnFont = new System.Drawing.Font("微软雅黑", 17F);
+            this.back.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.back.BtnText = "";
+            this.back.ConerRadius = 30;
+            this.back.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.back.EnabledMouseEffect = true;
+            this.back.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(159)))), ((int)(((byte)(225)))));
+            this.back.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.back.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.back.Image = ((System.Drawing.Image)(resources.GetObject("back.Image")));
+            this.back.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.back.ImageFontIcons = ((object)(resources.GetObject("back.ImageFontIcons")));
+            this.back.IsRadius = true;
+            this.back.IsShowRect = false;
+            this.back.IsShowTips = false;
+            this.back.Location = new System.Drawing.Point(928, 895);
+            this.back.Margin = new System.Windows.Forms.Padding(0);
+            this.back.Name = "back";
+            this.back.RectColor = System.Drawing.Color.White;
+            this.back.RectWidth = 1;
+            this.back.Size = new System.Drawing.Size(81, 68);
+            this.back.TabIndex = 36;
+            this.back.TabStop = false;
+            this.back.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.back.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.back.TipsText = "";
+            this.back.BtnClick += new System.EventHandler(this.back_BtnClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.back);
             this.Controls.Add(this.openFile);
             this.Controls.Add(this.ReverseBox);
             this.Controls.Add(this.oriData);
@@ -526,6 +560,7 @@
         private HZH_Controls.Controls.TextBoxEx kh;
         private System.Windows.Forms.Label label6;
         private HZH_Controls.Controls.UCBtnImg openFile;
+        private HZH_Controls.Controls.UCBtnImg back;
     }
 }
 

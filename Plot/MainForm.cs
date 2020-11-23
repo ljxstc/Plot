@@ -16,17 +16,17 @@ namespace Plot
 
     public partial class MainForm : Form
     {
-        [DllImport("user32")]
-        private static extern int mouse_event(int mouseevent, int dx, int dy, int cButtons, int dwExtraInfo);
-        [DllImport("User32")]
-        public extern static void SetCursorPos(int x, int y);
+       
+       
 
         private static Form frm1;
-        
-        public MainForm()
+        private static defaultForm defaultForm;
+        public MainForm(defaultForm dForm)
 
         {
             InitializeComponent();
+            defaultForm = dForm;
+
             //获取启动时主界面在屏幕上的坐标
             var screenPoint = PointToScreen(this.Location);
             //存入实体类
@@ -78,6 +78,8 @@ namespace Plot
 
             oriData.Hide();
             ReverseBox.Hide();
+
+            back.Hide();
             #endregion
 
             //设置图标
@@ -120,6 +122,8 @@ namespace Plot
 
             ReverseBox.Show();
             oriData.Show();
+
+            back.Show();
             #endregion
             //原始数据显示
             deltaP.Text = PlotPointData.OriX.ToString("0.00");
@@ -137,16 +141,7 @@ namespace Plot
         Point mPoint = new Point();
 
 
-        private void button1_MouseMove(object sender, MouseEventArgs e)
-        {
-            ////模拟鼠标左键按下 
-            //const int MOUSEEVENTF_LEFTDOWN = 0x0002;
-            ////模拟鼠标左键抬起 
-            //const int MOUSEEVENTF_LEFTUP = 0x0004;
-            //mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-
-
-        }
+      
 
 
        
@@ -199,6 +194,10 @@ namespace Plot
             }
         }
 
-       
+        private void back_BtnClick(object sender, EventArgs e)
+        {
+            this.Dispose();
+            defaultForm.Show();
+        }
     }
 }

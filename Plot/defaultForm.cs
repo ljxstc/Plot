@@ -34,7 +34,7 @@ namespace Plot
             PlotPointData.u = Convert.ToDouble(u.Text);
             PlotPointData.phi = Convert.ToDouble(phi.Text);
             this.Hide();
-            Form mfrm = new MainForm();
+            Form mfrm = new MainForm(this);
             mfrm.Show();
             mfrm.FormClosed += MFRM_FormClosed;
             mfrm.Show();

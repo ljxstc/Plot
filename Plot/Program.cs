@@ -21,29 +21,5 @@ namespace Plot
         }
     }
 
-    class MyapplicationContext : ApplicationContext
-    {
-        private void onFormClosed(object sender, EventArgs e)
-        {
-            if (Application.OpenForms.Count == 0)
-            {
-                ExitThread();
-            }
-        }
-        public MyapplicationContext()
-        {
-            var forms = new List<Form>(){
-            new MainForm()
-          
-        };
-            foreach (var form in forms)
-            {
-                form.FormClosed += onFormClosed;
-            }
-            foreach (var form in forms)
-            {
-                form.Show();
-            }
-        }
-    }
+    
 }

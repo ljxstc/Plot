@@ -36,15 +36,15 @@ namespace Plot
             
             if (index == 0)
             {
-                string[] dataPath = { "D:\\压力反演\\PC=1S=1.csv" ,
-                "D:\\压力反演\\PC=1S=10.csv",
-                "D:\\压力反演\\PC=1S=20.csv",
-                "D:\\压力反演\\PC=10S=1.csv",
-                "D:\\压力反演\\PC=10S=10.csv",
-                "D:\\压力反演\\PC=10S=20.csv",
-                "D:\\压力反演\\PC=100S=1.csv",
-                "D:\\压力反演\\PC=100S=10.csv",
-                "D:\\压力反演\\PC=100S=20.csv"};
+                string[] dataPath = { "plotdata\\PC=1S=1.csv" ,
+                "plotdata\\PC=1S=10.csv",
+                "plotdata\\PC=1S=20.csv",
+                "plotdata\\PC=10S=1.csv",
+                "plotdata\\PC=10S=10.csv",
+                "plotdata\\PC=10S=20.csv",
+                "plotdata\\PC=100S=1.csv",
+                "plotdata\\PC=100S=10.csv",
+                "plotdata\\PC=100S=20.csv"};
                 OxyColor[] colors = {OxyColors.Red,
                 OxyColors.Blue,
                 OxyColors.Automatic,
