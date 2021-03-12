@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plot", "Plot\Plot.csproj", "{54F777FB-2539-4873-B3FA-15F33A5D7DD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlotExample", "..\PlotExample\PlotExample\PlotExample.csproj", "{4CA75F58-A55F-4A25-B701-A4C9AD27E15F}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Plot Installer", "Plot Installer\Plot Installer.vdproj", "{09F3AA33-187A-45B3-9368-5CCF5D9F12AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,8 @@ Global
 		{54F777FB-2539-4873-B3FA-15F33A5D7DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F777FB-2539-4873-B3FA-15F33A5D7DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F777FB-2539-4873-B3FA-15F33A5D7DD8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4CA75F58-A55F-4A25-B701-A4C9AD27E15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CA75F58-A55F-4A25-B701-A4C9AD27E15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CA75F58-A55F-4A25-B701-A4C9AD27E15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CA75F58-A55F-4A25-B701-A4C9AD27E15F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09F3AA33-187A-45B3-9368-5CCF5D9F12AB}.Debug|Any CPU.ActiveCfg = Debug
+		{09F3AA33-187A-45B3-9368-5CCF5D9F12AB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

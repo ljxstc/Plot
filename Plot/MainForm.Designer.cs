@@ -517,6 +517,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.back);
             this.Controls.Add(this.openFile);
@@ -524,10 +525,12 @@
             this.Controls.Add(this.oriData);
             this.Controls.Add(this.ucCombox1);
             this.Controls.Add(this.pictureBox1);
+            this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "主界面";
+            this.TransparencyKey = System.Drawing.SystemColors.Highlight;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.oriData.ResumeLayout(false);
             this.oriData.PerformLayout();
