@@ -84,7 +84,7 @@ namespace Plot
 
             //设置图标
             List<KeyValuePair<string, string>> lstCom = new List<KeyValuePair<string, string>>();                      
-            lstCom.Add(new KeyValuePair<string, string>("1", "均质地层球形流样板曲线"));
+            lstCom.Add(new KeyValuePair<string, string>("1", "均质地层径向流样板曲线"));
             lstCom.Add(new KeyValuePair<string, string>("2", "均质地层球形流-径向流样板曲线"));
             lstCom.Add(new KeyValuePair<string, string>("3", "复合地层球形流-径向流样板曲线"));
             this.ucCombox1.Source = lstCom;

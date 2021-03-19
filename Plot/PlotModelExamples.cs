@@ -19,6 +19,7 @@ namespace Plot
         /// </summary>
         /// <param name="lists"></param>
         /// <param name="model"></param>
+        [Obsolete]
         public static void plotEvent(List<List<LineSeries>> lists, PlotModel model)
         {
             //两条数据
@@ -138,20 +139,22 @@ namespace Plot
             };
 
         }
-        /// <summary>
-        /// 载入多组数据，绘制曲线
-        /// </summary>
-        /// <param name="dataPath">路径名字符串数组</param>
-        /// <param name="colors">曲线颜色字符串数组</param>
-        /// <param name="bw">多线程加载</param>
-        /// <returns></returns>
-        public static PlotModel multidataLine(string[] dataPath, OxyColor[] colors, BackgroundWorker bw, ref List<List<LineSeries>> lists)
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="dataPath">数据路径</param>
+      /// <param name="timePath">时间路径</param>
+      /// <param name="colors">颜色</param>
+      /// <param name="bw">background worker</param>
+      /// <param name="lists">曲线组的lists</param>
+      /// <returns></returns>
+        public static PlotModel multidataLine(string[] dataPath, string[] timePath,OxyColor[] colors, BackgroundWorker bw, ref List<List<LineSeries>> lists)
         {
             lists = new List<List<LineSeries>>();
             PlotModel m = new PlotModel();
             for (int i = 0; i < dataPath.Length; i++)
             {
-                lists.Add(dataLine(dataPath[i], colors[i]));
+                lists.Add(dataLine(dataPath[i],timePath[0],timePath[1], colors[i]));
                 
                 //进度条，与运算无关
                 int percentage = 100 * (i + 1) / dataPath.Length;
@@ -171,35 +174,44 @@ namespace Plot
             }
             m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
             m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
+           
             return m;
         }
 
         /// <summary>
         /// 载入单组数据绘制曲线
         /// </summary>
-        /// <param name="dataPath"></param>
+        /// <param name="dataPath">数据路径</param>
+        /// <param name="tPath">时间路径</param>
+        /// <param name="tdPath">压力导数时间路径</param>
         /// <param name="color"></param>
-        /// <returns></returns>
-        public static List<LineSeries> dataLine(string dataPath, OxyColor color)
+        /// <returns></returns>        
+        public static List<LineSeries> dataLine(string dataPath, string tPath,string tdPath,OxyColor color)
         {
             CSV data1 = new CSV(dataPath);
-            int column = data1.ColumnCount;
+            CSV time = new CSV(tPath);
+            CSV time1 = new CSV(tdPath);
             int row = data1.RowCount;
             double[] t = new double[row];
+            double[] td = new double[row];
             double[] p = new double[row];
             double[] pd = new double[row];
 
             for (int j = 0; j < row; j++)
             {
-                t[j] = Convert.ToDouble(data1.GetData(j, 0));
+                p[j] = Convert.ToDouble(data1.GetData(j, 0));
             }
             for (int j = 0; j < row; j++)
             {
-                p[j] = Convert.ToDouble(data1.GetData(j, 1));
+                pd[j] = Convert.ToDouble(data1.GetData(j, 1));
             }
             for (int j = 0; j < row; j++)
             {
-                pd[j] = Convert.ToDouble(data1.GetData(j, 2));
+                t[j] = Convert.ToDouble(time.GetData(j, 0));
+            }
+            for (int j = 0; j < row; j++)
+            {
+                td[j] = Convert.ToDouble(time1.GetData(j, 0));
             }
 
             var s1 = new LineSeries
@@ -220,7 +232,7 @@ namespace Plot
 
             for (int i = 0; i < row; i++)
             {
-                s2.Points.Add(new DataPoint(t[i], pd[i]));
+                s2.Points.Add(new DataPoint(td[i], pd[i]));
             }
             List<LineSeries> list = new List<LineSeries>();
 

@@ -27,34 +27,55 @@ namespace Plot
  
         }
 
-
-       
-
+        [Obsolete]
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             List<List<LineSeries>> lists = new List<List<LineSeries>>();
             
             if (index == 0)
             {
-                string[] dataPath = { "plotdata\\PC=1S=1.csv" ,
-                "plotdata\\PC=1S=10.csv",
-                "plotdata\\PC=1S=20.csv",
-                "plotdata\\PC=10S=1.csv",
-                "plotdata\\PC=10S=10.csv",
-                "plotdata\\PC=10S=20.csv",
-                "plotdata\\PC=100S=1.csv",
-                "plotdata\\PC=100S=10.csv",
-                "plotdata\\PC=100S=20.csv"};
+
+                string[] dataPath = { "plotdata\\CdS=0.1.csv" ,
+                "plotdata\\CdS=0.3.csv",
+                "plotdata\\CdS=1.csv",
+                "plotdata\\CdS=3.csv",
+                "plotdata\\CdS=11.csv",
+                "plotdata\\CdS=2.csv",
+                "plotdata\\CdS=3.csv",
+                "plotdata\\CdS=4.csv",
+                "plotdata\\CdS=6.csv",
+                "plotdata\\CdS=8.csv",
+                "plotdata\\CdS=12.csv",
+                "plotdata\\CdS=15.csv",
+                "plotdata\\CdS=20.csv",
+                "plotdata\\CdS=30.csv",
+                "plotdata\\CdS=40.csv",
+                "plotdata\\CdS=50.csv",
+                "plotdata\\CdS=60.csv"
+                };
+                string[] timePath = {
+                "plotdata\\t.csv",
+                "plotdata\\td.csv"
+                };
                 OxyColor[] colors = {OxyColors.Red,
-                OxyColors.Blue,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic};
-                plotModel = PlotModelExamples.multidataLine(dataPath, colors, backgroundWorker1, ref lists);
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red,
+                    OxyColors.Red
+                                    };
+                plotModel = PlotModelExamples.multidataLine(dataPath, timePath, colors, backgroundWorker1, ref lists);
                 ucProcessLine1.Hide();
                 label1.Hide();
                 PlotModelExamples.plotEvent(lists, plotModel);
@@ -64,47 +85,47 @@ namespace Plot
             }
             else if (index == 1)
             {
-                string[] dataPath = { "D:\\压力反演\\PC=1S=1.csv"
-            };
-                OxyColor[] colors = {OxyColors.Red,
-                OxyColors.Blue,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic};
-                //List<LineSeries> list = TrackerExamples.dataLine(dataPath, OxyColors.Red);
-                //PlotModel plot1 = TrackerExamples.plotCurveLine(list);
-                plotModel = PlotModelExamples.multidataLine(dataPath, colors, backgroundWorker1,ref lists);
-                ucProcessLine1.Hide();
-                label1.Hide();
-                PlotModelExamples.plotEvent(lists, plotModel);
-                this.plotView1.Model = plotModel;
+            //    string[] dataPath = { "D:\\压力反演\\PC=1S=1.csv"
+            //};
+            //    OxyColor[] colors = {OxyColors.Red,
+            //    OxyColors.Blue,
+            //    OxyColors.Automatic,
+            //    OxyColors.Automatic,
+            //    OxyColors.Automatic,
+            //    OxyColors.Automatic,
+            //    OxyColors.Automatic,
+            //    OxyColors.Automatic,
+            //    OxyColors.Automatic};
+            //    //List<LineSeries> list = TrackerExamples.dataLine(dataPath, OxyColors.Red);
+            //    //PlotModel plot1 = TrackerExamples.plotCurveLine(list);
+            //    plotModel = PlotModelExamples.multidataLine(dataPath, colors, backgroundWorker1,ref lists);
+            //    ucProcessLine1.Hide();
+            //    label1.Hide();
+            //    PlotModelExamples.plotEvent(lists, plotModel);
+            //    this.plotView1.Model = plotModel;
 
 
             }
             else if (index == 2)
             {
-                string[] dataPath = {
-                "D:\\压力反演\\PC=1S=10.csv"};
-                OxyColor[] colors = {OxyColors.Red,
-                OxyColors.Blue,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic,
-                OxyColors.Automatic};
-                //List<LineSeries> list = TrackerExamples.dataLine(dataPath, OxyColors.Red);
-                //PlotModel plot1 = TrackerExamples.plotCurveLine(list);
-                plotModel = PlotModelExamples.multidataLine(dataPath, colors, backgroundWorker1, ref lists);
-                ucProcessLine1.Hide();
-                label1.Hide();
-                PlotModelExamples.plotEvent(lists, plotModel);
-                this.plotView1.Model = plotModel;
+                //string[] dataPath = {
+                //"D:\\压力反演\\PC=1S=10.csv"};
+                //OxyColor[] colors = {OxyColors.Red,
+                //OxyColors.Blue,
+                //OxyColors.Automatic,
+                //OxyColors.Automatic,
+                //OxyColors.Automatic,
+                //OxyColors.Automatic,
+                //OxyColors.Automatic,
+                //OxyColors.Automatic,
+                //OxyColors.Automatic};
+                ////List<LineSeries> list = TrackerExamples.dataLine(dataPath, OxyColors.Red);
+                ////PlotModel plot1 = TrackerExamples.plotCurveLine(list);
+                //plotModel = PlotModelExamples.multidataLine(dataPath, colors, backgroundWorker1, ref lists);
+                //ucProcessLine1.Hide();
+                //label1.Hide();
+                //PlotModelExamples.plotEvent(lists, plotModel);
+                //this.plotView1.Model = plotModel;
             }
 
             if (backgroundWorker1.CancellationPending)
