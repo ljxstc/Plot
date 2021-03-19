@@ -26,7 +26,7 @@ namespace Plot
             List<LineSeries> listEvent = new List<LineSeries>(); 
             foreach (List<LineSeries> listLine in lists)
             {  
-                //实际上就是两组数
+                //实际上就是两组数，压力、压力导数
                 for (int j = 0; j < listLine.Count(); j++)
                 {
                     listEvent.Add(listLine[j]);  //把所有的数都加到listEvent里了
@@ -34,98 +34,94 @@ namespace Plot
             }
 
 
-            #region 绑定鼠标事件
+            #region 绑定鼠标事件，只绑定压力曲线
             listEvent[0].MouseDown += (s, e) =>
             {
-                model.InvalidatePlot(false);
+                //model.InvalidatePlot(false);
                 PlotPointData.name = 0;
                 
-            };
-            listEvent[1].MouseDown += (s, e) =>
-            {
-               
-                PlotPointData.name = 1;
             };
             listEvent[2].MouseDown += (s, e) =>
             {
                
-                PlotPointData.name = 2;
-            };
-            listEvent[3].MouseDown += (s, e) =>
-            {
-               
-                PlotPointData.name = 3;
+                PlotPointData.name = 1;
             };
             listEvent[4].MouseDown += (s, e) =>
             {
                
-                PlotPointData.name = 4;
-            };
-            listEvent[5].MouseDown += (s, e) =>
-            {
-               
-                PlotPointData.name = 5;
+                PlotPointData.name = 2;
             };
             listEvent[6].MouseDown += (s, e) =>
             {
                
-                PlotPointData.name = 6;
-            };
-            listEvent[7].MouseDown += (s, e) =>
-            {
-                
-                PlotPointData.name = 7;
+                PlotPointData.name = 3;
             };
             listEvent[8].MouseDown += (s, e) =>
             {
-                
-                PlotPointData.name = 8;
-            };
-            listEvent[9].MouseDown += (s, e) =>
-            {
-                
-                PlotPointData.name = 9;
+               
+                PlotPointData.name = 4;
             };
             listEvent[10].MouseDown += (s, e) =>
             {
-                
-                PlotPointData.name = 10;
-            };
-            listEvent[11].MouseDown += (s, e) =>
-            {
-                
-                PlotPointData.name = 11;
+               
+                PlotPointData.name = 5;
             };
             listEvent[12].MouseDown += (s, e) =>
             {
-              
-                PlotPointData.name = 12;
-            };
-            listEvent[13].MouseDown += (s, e) =>
-            {
-                
-                PlotPointData.name = 13;
+               
+                PlotPointData.name = 6;
             };
             listEvent[14].MouseDown += (s, e) =>
             {
                 
-                PlotPointData.name = 14;
-            };
-            listEvent[15].MouseDown += (s, e) =>
-            {
-                
-                PlotPointData.name = 15;
+                PlotPointData.name = 7;
             };
             listEvent[16].MouseDown += (s, e) =>
             {
                 
+                PlotPointData.name = 8;
+            };
+            listEvent[18].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 9;
+            };
+            listEvent[20].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 10;
+            };
+            listEvent[22].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 11;
+            };
+            listEvent[24].MouseDown += (s, e) =>
+            {
+              
+                PlotPointData.name = 12;
+            };
+            listEvent[26].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 13;
+            };
+            listEvent[28].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 14;
+            };
+            listEvent[30].MouseDown += (s, e) =>
+            {
+                
+                PlotPointData.name = 15;
+            };
+            listEvent[32].MouseDown += (s, e) =>
+            {
+                
                 PlotPointData.name = 16;
             };
-            listEvent[17].MouseDown += (s, e) =>
-            {
-             
-                PlotPointData.name = 17;
-            };
+          
 
             #endregion
 
