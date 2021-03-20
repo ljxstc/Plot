@@ -230,18 +230,13 @@ namespace Plot
       /// <param name="bw">background worker</param>
       /// <param name="lists">曲线组的lists</param>
       /// <returns></returns>
-        public static PlotModel multidataLine(string[] dataPath, string[] timePath,OxyColor[] colors, BackgroundWorker bw, ref List<List<LineSeries>> lists)
+        public static PlotModel multidataLine(string[] dataPath, string[] timePath,OxyColor[] colors, ref List<List<LineSeries>> lists)
         {
             lists = new List<List<LineSeries>>();
             PlotModel m = new PlotModel();
             for (int i = 0; i < dataPath.Length; i++)
             {
                 lists.Add(dataLine(dataPath[i],timePath[0],timePath[1], colors[i]));
-                
-                //进度条，与运算无关
-                int percentage = 100 * (i + 1) / dataPath.Length;
-                bw.ReportProgress(percentage);
-
             }
             ////要标记曲线
          
