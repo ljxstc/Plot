@@ -34,7 +34,7 @@ namespace Plot
             }
 
 
-            #region 绑定鼠标事件，只绑定压力曲线
+            #region 绑定鼠标事件
 
             listEvent[0].MouseDown += (s, e) =>
             {
@@ -249,8 +249,8 @@ namespace Plot
                 }
 
             }
-            m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
-            m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
+            m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom , Base = 10, Minimum = 0.1, Maximum = 30000});
+            m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left, Base = 10, Minimum = 0.1, Maximum = 100});
            
             return m;
         }
@@ -318,6 +318,8 @@ namespace Plot
             return list;
         }
 
+
+        #region 示例函数
         public static PlotModel AmdahlsLaw()
         {
             var model = new PlotModel { Title = "Amdahl's law" };
@@ -398,6 +400,16 @@ namespace Plot
             return model;
         }
 
+      
+        public static PlotModel AbsoluteMaximum()
+        {
+            var model = new PlotModel { Title = "AbsoluteMaximum = 1000" };
+            model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left, Minimum = 0.1, Maximum = 1000, AbsoluteMaximum = 1000 });
+            model.Series.Add(new FunctionSeries(Math.Exp, 0, Math.Log(900), 100));
+            return model;
+        }
+        #endregion
+
         [Obsolete]
         public static PlotModel PlotPressAndTime(ArrayList arrayList)
         {
@@ -462,8 +474,8 @@ namespace Plot
             #endregion
 
             //更改为对数坐标图
-            model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom });
-            model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left });
+            model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom,Base =10, Minimum = 0.01, Maximum = 100 });
+            model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left , Base = 10, Minimum = 1, Maximum = 1000 });
 
             //model.TrackerChanged += (s, e) =>
             //{

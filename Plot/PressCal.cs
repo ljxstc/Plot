@@ -85,20 +85,23 @@ namespace Plot
         /// <param name="b">地层体积系数</param>
         /// <param name="u">粘度</param>
         /// <returns></returns>
-        public static double[] KhCal(double p, double pd,double t, double td, int name, double q, double b, double u )
+        public static double[] KhCal(double p, double pd,double t, double td, int name, 
+            double q, double b, double u, double phi, double ct, double h, double rw)
+            
         {
             //pd / deltaP
             double pdP = pd / p;
             //td / deltaT
             double tdT = td / t;
-            //cd和S
-            double[] cdS = PressCal.cdS(name);
             //渗透率kh
             double kh = 141.2 * q * b * u * pdP;
             //管储系数
             double c = 0.000295 * kh / (u * tdT);
+            //无因次管储系数
+            double cd = (0.8936 * c) / (phi * ct * h * Math.Pow(rw,2));
             //表皮系数
-            double s = cdS[1];
+            double Cds = cdS(name);
+            double s = 0.5 * Math.Log(Cds / cd);
             double[] result = new double[3];
             result[0] = kh;
             result[1] = c;
@@ -112,74 +115,13 @@ namespace Plot
         /// </summary>
         /// <param name="name">选择曲线名</param>
         /// <returns></returns>
-        public static double[] cdS(int name)
+        public static double cdS(int name)
         {
-            double cd, s;
-            double [] cdS = new double[2];
-            if (name ==0 )
-            {
-                cd = 1;
-                s = 1;
-                cdS[0] = cd;
-                cdS[1] = s;
-            }
-            else if (name == 2 | name == 3)
-            {
-                cd = 1;
-                s = 10;
-                cdS[0] = cd;
-                cdS[1] = s;
-            }
-            else if (name == 4 | name == 5)
-            {
-                cd = 1;
-                s = 20;
-                cdS[0] = cd;
-                cdS[1] = s;
-            }
-            else if (name == 6 | name == 7)
-            {
-                cd = 10;
-                s = 1;
-                cdS[0] = cd;
-                cdS[1] = s;
-            }
-            else if (name == 8 | name == 9)
-            {
-                cd = 10;
-                s = 10;
-                cdS[0] = cd;
-                cdS[1] = s;
-            }
-            else if (name == 10 | name == 11)
-            {
-                cd = 10;
-                s = 20;
-                cdS[0] = cd;
-                cdS[1] = s;
-            }
-            else if (name == 12 | name == 13)
-            {
-                cd = 100;
-                s = 1;
-                cdS[0] = cd;
-                cdS[1] = s;
-            }
-            else if (name == 14 | name == 15)
-            {
-                cd = 100;
-                s = 10;
-                cdS[0] = cd;
-                cdS[1] = s;
-            }
-            else if (name == 16 | name == 17)
-            {
-                cd = 100;
-                s = 20;
-                cdS[0] = cd;
-                cdS[1] = s;
-            }
-            return cdS;
+            double [] cdS = { 0.1, 0.1, 0.3, 0.3, 1, 1, 3, 3, 10, 10, 100, 100, 1000, 1000,
+                1e4, 1e4,1e6,1e6, 1e8,1e8, 1e10,1e10, 1e15,1e15, 1e20,1e20, 1e30, 1e30,1e40, 1e40,1e50,1e50, 1e60 ,1e60};
+            double cdS_r;
+            cdS_r = cdS[name];            
+            return cdS_r;
             
 
         }

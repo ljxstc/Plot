@@ -132,9 +132,10 @@ namespace Plot
             Td.Text = PlotPointData.StdY.ToString("0.00");
             name.Text = PlotPointData.name.ToString();
             //计算结果显示 public static double[] KhCal(double p, double pd,double t, double td, int name, double q, double b, double u )
-            double[] result = PressCal.KhCal(PlotPointData.OriY,PlotPointData.StdY,PlotPointData.OriX,PlotPointData.StdX,PlotPointData.name,PlotPointData.q,PlotPointData.b,PlotPointData.u);
+            double[] result = PressCal.KhCal(PlotPointData.OriY,PlotPointData.StdY,PlotPointData.OriX,PlotPointData.StdX,PlotPointData.name,PlotPointData.q,PlotPointData.b,PlotPointData.u,
+                PlotPointData.phi,PlotPointData.ct,PlotPointData.h,PlotPointData.rw);
             kh.Text = result[0].ToString("0.00");
-            c.Text = result[1].ToString("0.00");
+            c.Text = result[1].ToString("#.##e+0");
             S.Text = result[2].ToString("0.00");
         }
 

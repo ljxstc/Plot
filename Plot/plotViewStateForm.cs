@@ -75,6 +75,7 @@ namespace Plot
                                     };
                 plotModel = PlotModelExamples.multidataLine(dataPath, timePath, colors, ref lists);
                 PlotModelExamples.plotEvent(lists, plotModel);
+                //plotModel = PlotModelExamples.AbsoluteMaximum();
                 this.plotView1.Model = plotModel;
 
 
