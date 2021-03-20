@@ -116,7 +116,7 @@ namespace Plot
         {
             double cd, s;
             double [] cdS = new double[2];
-            if (name ==0 | name == 1)
+            if (name ==0 )
             {
                 cd = 1;
                 s = 1;

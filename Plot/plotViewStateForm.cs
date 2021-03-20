@@ -149,7 +149,8 @@ namespace Plot
         {
             if (PlotPointData.OutValue == true && PlotPointData.StdX != 0.0)
             {
-                MessageBox.Show("已获取曲线值");
+                MessageBox.Show($"已获取曲线值:{PlotPointData.StdX},{PlotPointData.StdY}" +
+                    $"选取的曲线条：{PlotPointData.name}");
                 backgroundWorker1.CancelAsync();
                 backgroundWorker1.Dispose();
                 plotView1.Dispose();
