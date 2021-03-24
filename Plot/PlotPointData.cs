@@ -49,6 +49,7 @@ namespace Plot
         public static double u { get; set; }
 
         public static double phi { get; set; }
+        public static double tp { get; set; }
         #endregion
     }
 }

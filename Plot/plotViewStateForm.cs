@@ -56,22 +56,22 @@ namespace Plot
                 "plotdata\\td.csv"
                 };
                 OxyColor[] colors = {OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red,
-                    OxyColors.Red
+                    OxyColors.Black,
+                    OxyColors.Blue,
+                    OxyColors.Pink,
+                    OxyColors.BlueViolet,
+                    OxyColors.Brown,
+                    OxyColors.Aqua,
+                    OxyColors.AliceBlue,
+                    OxyColors.RosyBrown,
+                    OxyColors.IndianRed,
+                    OxyColors.Gold,
+                    OxyColors.Green,
+                    OxyColors.Gray,
+                    OxyColors.Yellow,
+                    OxyColors.Orange,
+                    OxyColors.DeepSkyBlue,
+                    OxyColors.PaleGreen
                                     };
                 plotModel = PlotModelExamples.multidataLine(dataPath, timePath, colors, ref lists);
                 PlotModelExamples.plotEvent(lists, plotModel);

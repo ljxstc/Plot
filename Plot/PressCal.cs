@@ -62,12 +62,14 @@ namespace Plot
         /// <param name="deltaPress">压力差</param>
         /// <param name="t">时间</param>
         /// <returns></returns>
-        public static double[,] ToDerP(double[] deltaPress,double[] t)
+        public static double[,] ToDerP(double[] deltaPress,double[] t, double tp)
         {
-            MatlabCalLib derivative = new MatlabCalLib();
+            DerivativeClass derivative = new DerivativeClass();
             MWNumericArray deltaP = deltaPress;
             MWNumericArray t1 = t;
-            MWArray derPress = derivative.Derivative(t1,deltaP);
+            MWNumericArray Tp = tp;
+            MWNumericArray span = 10;
+            MWArray derPress = derivative.Derivative(t1,deltaP,tp,span);
             double[,] derPress1 = new double[deltaPress.Length-1,1];
             derPress1 = (double[,])derPress.ToArray();
             return derPress1;

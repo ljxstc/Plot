@@ -45,7 +45,8 @@ namespace Plot
         private bool isDrag = false;
         //鼠标选点标志
         private bool chosePoint1 = false;
-
+        //鼠标是否抬起
+        private bool isMouseUp = false;
         /// <summary>
         /// 鼠标按下事件，给坐标赋值
         /// </summary>
@@ -112,19 +113,27 @@ namespace Plot
         /// 
         private void plotView1_MouseUp(object sender, MouseEventArgs e)
         {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            string msg = "是否完成曲线拟合？";
-            string cation = "注意";
-            var result = MessageBox.Show(msg, cation, buttons);
-            if (result == DialogResult.Yes)
+            if (isMouseUp == false)
             {
-                isDrag = false;
-                MessageBox.Show("请点击曲线上的点进行拟合", "提示");
-                chosePoint1 = true;
+                isMouseUp = true;
+                return;
             }
+            if (isMouseUp == true)
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                string msg = "是否完成曲线拟合？";
+                string cation = "注意";
+                var result = MessageBox.Show(msg, cation, buttons);
+                if (result == DialogResult.Yes)
+                {
+                    isDrag = false;
+                    MessageBox.Show("请点击曲线上的点进行拟合", "提示");
+                    chosePoint1 = true;
+                }
+            }
+           
         }
 
-       
     }
     
 }

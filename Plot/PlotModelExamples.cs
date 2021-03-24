@@ -249,7 +249,7 @@ namespace Plot
                 }
 
             }
-            m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom , Base = 10, Minimum = 0.1, Maximum = 30000});
+            m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom , Base = 10, Minimum = 0.1, Maximum = 10000});
             m.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left, Base = 10, Minimum = 0.1, Maximum = 100});
            
             return m;
@@ -426,7 +426,7 @@ namespace Plot
             //计算几个数据
             PressCal.PressAndTime(arrayList, ref time, ref press);
             deltaPress = PressCal.ToDelta(press);
-            derPress = PressCal.ToDerP(deltaPress, time);
+            derPress = PressCal.ToDerP(deltaPress, time,PlotPointData.tp);
             for (int i = 1; i < time.Length; i++)
             {
                 derTime[i - 1] = time[i];
@@ -474,7 +474,7 @@ namespace Plot
             #endregion
 
             //更改为对数坐标图
-            model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom,Base =10, Minimum = 0.01, Maximum = 100 });
+            model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom,Base =10, Minimum = 0.001, Maximum = 10000 });
             model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left , Base = 10, Minimum = 1, Maximum = 1000 });
 
             //model.TrackerChanged += (s, e) =>

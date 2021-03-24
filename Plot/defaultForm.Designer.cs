@@ -47,6 +47,8 @@ namespace Plot
             this.u = new System.Windows.Forms.TextBox();
             this.phi = new System.Windows.Forms.TextBox();
             this.BtnSubmit = new HZH_Controls.Controls.UCBtnExt();
+            this.time = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -65,7 +67,7 @@ namespace Plot
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(99, 147);
+            this.label2.Location = new System.Drawing.Point(108, 159);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 28);
             this.label2.TabIndex = 1;
@@ -76,7 +78,7 @@ namespace Plot
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label3.Location = new System.Drawing.Point(99, 207);
+            this.label3.Location = new System.Drawing.Point(108, 219);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(151, 28);
             this.label3.TabIndex = 2;
@@ -87,7 +89,7 @@ namespace Plot
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label4.Location = new System.Drawing.Point(99, 262);
+            this.label4.Location = new System.Drawing.Point(108, 274);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(160, 28);
             this.label4.TabIndex = 3;
@@ -98,7 +100,7 @@ namespace Plot
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(99, 317);
+            this.label5.Location = new System.Drawing.Point(108, 329);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 28);
             this.label5.TabIndex = 4;
@@ -109,7 +111,7 @@ namespace Plot
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label6.Location = new System.Drawing.Point(99, 377);
+            this.label6.Location = new System.Drawing.Point(108, 389);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(121, 28);
             this.label6.TabIndex = 5;
@@ -120,7 +122,7 @@ namespace Plot
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label7.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label7.Location = new System.Drawing.Point(99, 432);
+            this.label7.Location = new System.Drawing.Point(108, 444);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(109, 28);
             this.label7.TabIndex = 6;
@@ -131,7 +133,7 @@ namespace Plot
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label8.Location = new System.Drawing.Point(99, 491);
+            this.label8.Location = new System.Drawing.Point(110, 494);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(107, 28);
             this.label8.TabIndex = 7;
@@ -140,7 +142,7 @@ namespace Plot
             // q
             // 
             this.q.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.q.Location = new System.Drawing.Point(283, 144);
+            this.q.Location = new System.Drawing.Point(292, 156);
             this.q.Name = "q";
             this.q.Size = new System.Drawing.Size(133, 35);
             this.q.TabIndex = 8;
@@ -148,7 +150,7 @@ namespace Plot
             // b
             // 
             this.b.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.b.Location = new System.Drawing.Point(283, 204);
+            this.b.Location = new System.Drawing.Point(292, 216);
             this.b.Name = "b";
             this.b.Size = new System.Drawing.Size(133, 35);
             this.b.TabIndex = 9;
@@ -156,7 +158,7 @@ namespace Plot
             // ct
             // 
             this.ct.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ct.Location = new System.Drawing.Point(283, 259);
+            this.ct.Location = new System.Drawing.Point(292, 271);
             this.ct.Name = "ct";
             this.ct.Size = new System.Drawing.Size(133, 35);
             this.ct.TabIndex = 10;
@@ -164,7 +166,7 @@ namespace Plot
             // h
             // 
             this.h.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.h.Location = new System.Drawing.Point(283, 314);
+            this.h.Location = new System.Drawing.Point(292, 326);
             this.h.Name = "h";
             this.h.Size = new System.Drawing.Size(133, 35);
             this.h.TabIndex = 11;
@@ -172,7 +174,7 @@ namespace Plot
             // rw
             // 
             this.rw.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rw.Location = new System.Drawing.Point(283, 374);
+            this.rw.Location = new System.Drawing.Point(292, 386);
             this.rw.Name = "rw";
             this.rw.Size = new System.Drawing.Size(133, 35);
             this.rw.TabIndex = 12;
@@ -180,7 +182,7 @@ namespace Plot
             // u
             // 
             this.u.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.u.Location = new System.Drawing.Point(283, 425);
+            this.u.Location = new System.Drawing.Point(292, 437);
             this.u.Name = "u";
             this.u.Size = new System.Drawing.Size(133, 35);
             this.u.TabIndex = 13;
@@ -188,7 +190,7 @@ namespace Plot
             // phi
             // 
             this.phi.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.phi.Location = new System.Drawing.Point(283, 488);
+            this.phi.Location = new System.Drawing.Point(292, 487);
             this.phi.Name = "phi";
             this.phi.Size = new System.Drawing.Size(133, 35);
             this.phi.TabIndex = 14;
@@ -220,11 +222,32 @@ namespace Plot
             this.BtnSubmit.TipsText = "";
             this.BtnSubmit.BtnClick += new System.EventHandler(this.BtnSubmit_MouseClick);
             // 
+            // time
+            // 
+            this.time.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.time.Location = new System.Drawing.Point(292, 104);
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(133, 35);
+            this.time.TabIndex = 16;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label9.Location = new System.Drawing.Point(108, 107);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(180, 28);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "关井前生产时间tp";
+            // 
             // defaultForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(536, 671);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.time);
             this.Controls.Add(this.BtnSubmit);
             this.Controls.Add(this.phi);
             this.Controls.Add(this.u);
@@ -269,5 +292,7 @@ namespace Plot
         private System.Windows.Forms.TextBox u;
         private System.Windows.Forms.TextBox phi;
         private HZH_Controls.Controls.UCBtnExt BtnSubmit;
+        private TextBox time;
+        private Label label9;
     }
 }

@@ -21,6 +21,7 @@ namespace Plot
             rw.Text = "0.29";
             u.Text = "2.5";
             phi.Text = "0.25";
+            time.Text = "15.33";
             
         }
 
@@ -33,6 +34,7 @@ namespace Plot
             PlotPointData.rw = Convert.ToDouble(rw.Text);
             PlotPointData.u = Convert.ToDouble(u.Text);
             PlotPointData.phi = Convert.ToDouble(phi.Text);
+            PlotPointData.tp = Convert.ToDouble(time.Text);
             this.Hide();
             Form mfrm = new MainForm(this);
             mfrm.Show();
