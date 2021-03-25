@@ -12,19 +12,19 @@ using System.Windows.Forms;
 
 namespace Plot
 {
-    public partial class plotViewStateForm : Form
+    public partial class plotViewStateFormstage2 : Form
     {
 
         public PlotModel plotModel = new PlotModel();
         private int index;
 
         [Obsolete]
-        public plotViewStateForm(int selectIndex)
+        public plotViewStateFormstage2(int selectIndex)
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
             index = selectIndex;
-            
+
 
 
 
@@ -32,7 +32,8 @@ namespace Plot
 
             if (index == 0)
             {
-                PlotPointData.formName = 0;
+                PlotPointData.formName = 1;
+
                 string[] dataPath = { "plotdata\\CdS=0.1.csv" ,
                 "plotdata\\CdS=0.3.csv",
                 "plotdata\\CdS=1.csv",
@@ -73,7 +74,38 @@ namespace Plot
                     OxyColors.DeepSkyBlue,
                     OxyColors.PaleGreen
                                     };
-                plotModel = PlotModelExamples.multidataLine(dataPath, timePath, colors, ref lists);
+
+                int name = PlotPointData.name;
+                string[] newDataPath = new string[3];
+                OxyColor[] newColors = new OxyColor[3];
+                for (int i = 0; i < dataPath.Length; i++)
+                {
+                    if (name == 0)
+                    {
+                        newDataPath[0] = dataPath[name];
+                        newDataPath[1] = dataPath[name+1];
+                        newColors[0] = colors[name];
+                        newColors[1] = colors[name+1];
+                    }
+                    else if (name == 16)
+                    {
+                        newDataPath[0] = dataPath[name-1];
+                        newDataPath[1] = dataPath[name];
+                        newColors[0] = colors[name-1];
+                        newColors[1] = colors[name];
+                    }
+                    else
+                    {
+                        newDataPath[0] = dataPath[name - 1];
+                        newDataPath[1] = dataPath[name];
+                        newDataPath[2] = dataPath[name + 1];
+                        newColors[0] = colors[name - 1];
+                        newColors[1] = colors[name];
+                        newColors[2] = colors[name + 1];
+                    }
+
+                }
+                plotModel = PlotModelExamples.multidataLine(newDataPath, timePath, newColors, ref lists);
                 PlotModelExamples.plotEvent(lists, plotModel);
                 //plotModel = PlotModelExamples.AbsoluteMaximum();
                 this.plotView1.Model = plotModel;
@@ -141,6 +173,7 @@ namespace Plot
             {
                 MessageBox.Show($"已获取曲线值:{PlotPointData.StdX},{PlotPointData.StdY}" +
                     $"选取的曲线条：{PlotPointData.name}");
+                plotView1.Dispose();
                 this.Close();
             }
         }

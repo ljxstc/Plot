@@ -32,6 +32,8 @@ namespace Plot
             ArrayList arrayList = ExcelProcess.DataSetToArrayList(dt);
             PlotModel plotModel = PlotModelExamples.PlotPressAndTime(arrayList);
             this.plotView1.Model = plotModel;
+            formLocation.X = PlotPointData.screenPoint.X + 120;
+            formLocation.Y = PlotPointData.screenPoint.Y + 183;
         }
 
 
@@ -39,7 +41,8 @@ namespace Plot
         /// 鼠标拖拽事件
         /// </summary>
         #region 
-
+        //屏幕初始位置
+        private Point formLocation = new Point();
         private Point mPoint = new Point();
         //鼠标拖拽标志
         private bool isDrag = false;
@@ -47,6 +50,7 @@ namespace Plot
         private bool chosePoint1 = false;
         //鼠标是否抬起
         private bool isMouseUp = false;
+        
         /// <summary>
         /// 鼠标按下事件，给坐标赋值
         /// </summary>
@@ -127,8 +131,10 @@ namespace Plot
                 if (result == DialogResult.Yes)
                 {
                     isDrag = false;
-                    MessageBox.Show("请点击曲线上的点进行拟合", "提示");
-                    chosePoint1 = true;
+                    this.Location = formLocation;
+                    MessageBox.Show("请选择右侧曲线中合适的图版曲线，完成粗拟合", "提示");
+                    //MessageBox.Show("请点击曲线上的点进行拟合", "提示");
+                    //chosePoint1 = true;
                 }
             }
            

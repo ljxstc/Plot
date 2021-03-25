@@ -124,7 +124,6 @@ namespace Plot
             double cdS_r;
             cdS_r = cdS[name];            
             return cdS_r;
-            
 
         }
 

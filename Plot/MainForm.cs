@@ -21,6 +21,7 @@ namespace Plot
 
         private static Form frm1;
         private static defaultForm defaultForm;
+        private static Form frm2;
         public MainForm(defaultForm dForm)
 
         {
@@ -89,17 +90,19 @@ namespace Plot
             lstCom.Add(new KeyValuePair<string, string>("3", "复合地层球形流-径向流样板曲线"));
             this.ucCombox1.Source = lstCom;
             this.ucCombox1.SelectedIndex = 0;
-            frm1 = new plotViewStateForm(this.ucCombox1.SelectedIndex);
+            frm1 = new plotViewStateForm(ucCombox1.SelectedIndex);
+            //frm2 = new plotViewStateFormstage2(ucCombox1.SelectedIndex);
             //启动固定位置子窗体
             frm1.MdiParent = this;
             frm1.FormClosed += FRM1_FormClosed;
             frm1.Show();
-
+            //frm2.MdiParent = this;
+            //frm2.FormClosed += FRM2_FormClosed;
 
 
         }
 
-        private void FRM1_FormClosed(object sender, FormClosedEventArgs e)
+        private void FRM2_FormClosed(object sender, FormClosedEventArgs e)
         {
             #region 主窗体控件显示
             label1.Show();
@@ -132,11 +135,22 @@ namespace Plot
             Td.Text = PlotPointData.StdY.ToString("0.00");
             name.Text = PlotPointData.name.ToString();
             //计算结果显示 public static double[] KhCal(double p, double pd,double t, double td, int name, double q, double b, double u )
-            double[] result = PressCal.KhCal(PlotPointData.OriY,PlotPointData.StdY,PlotPointData.OriX,PlotPointData.StdX,PlotPointData.name,PlotPointData.q,PlotPointData.b,PlotPointData.u,
-                PlotPointData.phi,PlotPointData.ct,PlotPointData.h,PlotPointData.rw);
+            double[] result = PressCal.KhCal(PlotPointData.OriY, PlotPointData.StdY, PlotPointData.OriX, PlotPointData.StdX, PlotPointData.name, PlotPointData.q, PlotPointData.b, PlotPointData.u,
+                PlotPointData.phi, PlotPointData.ct, PlotPointData.h, PlotPointData.rw);
             kh.Text = result[0].ToString("0.00");
             c.Text = result[1].ToString("#.##e+0");
             S.Text = result[2].ToString("0.00");
+        }
+
+        private void FRM1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+            
+                frm2 = new plotViewStateFormstage2(this.ucCombox1.SelectedIndex);
+                frm2.MdiParent = this;
+                frm2.FormClosed += FRM2_FormClosed;
+                frm2.Show();
+            
         }
 
         Point mPoint = new Point();
@@ -164,8 +178,24 @@ namespace Plot
                 frm1.FormClosed += FRM1_FormClosed;
                 frm1.Show();
             }
-                       
-            
+
+            //if (frm2 != null)
+            //{
+            //    frm2.Dispose();
+            //    frm2 = new plotViewStateFormstage2(this.ucCombox1.SelectedIndex);
+            //    frm2.MdiParent = this;
+            //    frm2.FormClosed += FRM2_FormClosed;
+            //    frm2.Show();
+            //}
+            //else
+            //{
+            //    frm2 = new plotViewStateForm(this.ucCombox1.SelectedIndex);
+            //    frm2.MdiParent = this;
+            //    frm2.FormClosed += FRM2_FormClosed;
+            //    frm2.Show();
+            //}
+
+
         }
 
         [Obsolete]

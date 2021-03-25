@@ -28,6 +28,8 @@ namespace Plot
         /// </summary>
         public static int name { get; set; }
         public static bool OutValue  { get; set; }
+        public static bool OutValue1 { get; set; }
+
         /// <summary>
         /// 主界面启动坐标
         /// </summary>
@@ -36,6 +38,10 @@ namespace Plot
         /// 载入文件路径
         /// </summary>
         public static string fileName { get; set; }
+        /// <summary>
+        /// 窗体名称，通过选择不同的窗体，绑定不同的事件
+        /// </summary>
+        public static int formName { get; set; }
 
         #region 初始参数
         public static double q { get; set; }

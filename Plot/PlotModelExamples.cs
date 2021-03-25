@@ -33,192 +33,244 @@ namespace Plot
                 }
             }
 
-
-            #region 绑定鼠标事件
-
-            listEvent[0].MouseDown += (s, e) =>
+            //粗拟合
+            if (PlotPointData.formName == 0)
             {
-                //model.InvalidatePlot(false);
-                PlotPointData.name = 0;
+                #region 绑定鼠标事件
 
-            };
-            listEvent[1].MouseDown += (s, e) =>
+                listEvent[0].MouseDown += (s, e) =>
+                {
+                    //model.InvalidatePlot(false);
+                    PlotPointData.name = 0;
+
+                };
+                listEvent[1].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 0;
+                };
+                listEvent[2].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 1;
+                };
+                listEvent[3].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 1;
+                };
+                listEvent[4].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 2;
+                };
+                listEvent[5].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 2;
+                };
+                listEvent[6].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 3;
+                };
+                listEvent[7].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 3;
+                };
+                listEvent[8].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 4;
+                };
+                listEvent[9].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 4;
+                };
+                listEvent[10].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 5;
+                };
+                listEvent[11].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 5;
+                };
+                listEvent[12].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 6;
+                };
+                listEvent[13].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 6;
+                };
+                listEvent[14].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 7;
+                };
+                listEvent[15].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 7;
+                };
+                listEvent[16].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 8;
+                };
+
+                listEvent[17].MouseDown += (s, e) =>
+                {
+                    //model.InvalidatePlot(false);
+                    PlotPointData.name = 8;
+
+                };
+                listEvent[18].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 9;
+                };
+                listEvent[19].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 9;
+                };
+                listEvent[20].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 10;
+                };
+                listEvent[21].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 10;
+                };
+                listEvent[22].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 11;
+                };
+                listEvent[23].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 11;
+                };
+                listEvent[24].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 12;
+                };
+                listEvent[25].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 12;
+                };
+                listEvent[26].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 13;
+                };
+                listEvent[27].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 13;
+                };
+                listEvent[28].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 14;
+                };
+                listEvent[29].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 14;
+                };
+                listEvent[30].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 15;
+                };
+                listEvent[31].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 15;
+                };
+                listEvent[32].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 16;
+                };
+                listEvent[33].MouseDown += (s, e) =>
+                {
+
+                    PlotPointData.name = 16;
+                };
+                #endregion
+
+                //绑定模型追踪事件
+                model.TrackerChanged += (s, e) =>
+                {
+                    model.InvalidatePlot(false);
+                    //PlotPointData.StdX = e.HitResult != null ? e.HitResult.DataPoint.X : 0.0;
+                    //PlotPointData.StdY = e.HitResult != null ? e.HitResult.DataPoint.Y : 0.0;
+                    PlotPointData.OutValue = true;
+                };
+            }
+            //细拟合
+            if (PlotPointData.formName == 1)
             {
+                #region 绑定鼠标事件
 
-                PlotPointData.name = 1;
-            };
-            listEvent[2].MouseDown += (s, e) =>
-            {
+                listEvent[0].MouseDown += (s, e) =>
+                {
+                    //model.InvalidatePlot(false);
+                    PlotPointData.name = 0;
 
-                PlotPointData.name = 2;
-            };
-            listEvent[3].MouseDown += (s, e) =>
-            {
+                };
+                listEvent[1].MouseDown += (s, e) =>
+                {
 
-                PlotPointData.name = 3;
-            };
-            listEvent[4].MouseDown += (s, e) =>
-            {
+                    PlotPointData.name = 0;
+                };
+                listEvent[2].MouseDown += (s, e) =>
+                {
 
-                PlotPointData.name = 4;
-            };
-            listEvent[5].MouseDown += (s, e) =>
-            {
+                    PlotPointData.name = 1;
+                };
+                listEvent[3].MouseDown += (s, e) =>
+                {
 
-                PlotPointData.name = 5;
-            };
-            listEvent[6].MouseDown += (s, e) =>
-            {
+                    PlotPointData.name = 1;
+                };
+                listEvent[4].MouseDown += (s, e) =>
+                {
 
-                PlotPointData.name = 6;
-            };
-            listEvent[7].MouseDown += (s, e) =>
-            {
+                    PlotPointData.name = 2;
+                };
+                listEvent[5].MouseDown += (s, e) =>
+                {
 
-                PlotPointData.name = 7;
-            };
-            listEvent[8].MouseDown += (s, e) =>
-            {
+                    PlotPointData.name = 2;
+                };
+               
+                #endregion
 
-                PlotPointData.name = 8;
-            };
-            listEvent[9].MouseDown += (s, e) =>
-            {
+                //绑定模型追踪事件
+                model.TrackerChanged += (s, e) =>
+                {
+                    model.InvalidatePlot(false);
+                    //PlotPointData.StdX = e.HitResult != null ? e.HitResult.DataPoint.X : 0.0;
+                    //PlotPointData.StdY = e.HitResult != null ? e.HitResult.DataPoint.Y : 0.0;
+                    PlotPointData.OutValue = true;
+                };
+            }
 
-                PlotPointData.name = 9;
-            };
-            listEvent[10].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 10;
-            };
-            listEvent[11].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 11;
-            };
-            listEvent[12].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 12;
-            };
-            listEvent[13].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 13;
-            };
-            listEvent[14].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 14;
-            };
-            listEvent[15].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 15;
-            };
-            listEvent[16].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 16;
-            };
-
-            listEvent[17].MouseDown += (s, e) =>
-            {
-                //model.InvalidatePlot(false);
-                PlotPointData.name = 17;
-
-            };
-            listEvent[18].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 18;
-            };
-            listEvent[19].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 19;
-            };
-            listEvent[20].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 20;
-            };
-            listEvent[21].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 21;
-            };
-            listEvent[22].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 22;
-            };
-            listEvent[23].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 23;
-            };
-            listEvent[24].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 24;
-            };
-            listEvent[25].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 25;
-            };
-            listEvent[26].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 26;
-            };
-            listEvent[27].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 27;
-            };
-            listEvent[28].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 28;
-            };
-            listEvent[29].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 29;
-            };
-            listEvent[30].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 30;
-            };
-            listEvent[31].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 31;
-            };
-            listEvent[32].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 32;
-            };
-            listEvent[33].MouseDown += (s, e) =>
-            {
-
-                PlotPointData.name = 33;
-            };
-            #endregion
-
-            //绑定模型追踪事件
-            model.TrackerChanged += (s, e) =>
-            {
-                model.InvalidatePlot(false);
-                PlotPointData.StdX = e.HitResult != null ? e.HitResult.DataPoint.X : 0.0;
-                PlotPointData.StdY = e.HitResult != null ? e.HitResult.DataPoint.Y : 0.0;
-                PlotPointData.OutValue = true;
-            };
 
         }
       /// <summary>
@@ -305,6 +357,7 @@ namespace Plot
             {
                 CanTrackerInterpolatePoints = true,
                 Color = color
+
             };
 
             for (int i = 0; i < row; i++)
@@ -474,7 +527,7 @@ namespace Plot
             #endregion
 
             //更改为对数坐标图
-            model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom,Base =10, Minimum = 0.001, Maximum = 10000 });
+            model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Bottom,Base =10, Minimum = 0.001, Maximum = 100 });
             model.Axes.Add(new LogarithmicAxis { Position = AxisPosition.Left , Base = 10, Minimum = 1, Maximum = 1000 });
 
             //model.TrackerChanged += (s, e) =>

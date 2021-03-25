@@ -130,6 +130,12 @@
     <Compile Include="plotViewForm.Designer.cs">
       <DependentUpon>plotViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="plotViewStateFormstage2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="plotViewStateFormstage2.Designer.cs">
+      <DependentUpon>plotViewStateFormstage2.cs</DependentUpon>
+    </Compile>
     <Compile Include="plotViewStateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="plotViewForm.resx">
       <DependentUpon>plotViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="plotViewStateFormstage2.resx">
+      <DependentUpon>plotViewStateFormstage2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="plotViewStateForm.resx">
       <DependentUpon>plotViewStateForm.cs</DependentUpon>
