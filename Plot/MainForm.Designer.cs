@@ -53,6 +53,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.openFile = new HZH_Controls.Controls.UCBtnImg();
             this.back = new HZH_Controls.Controls.UCBtnImg();
+            this.ucStep1 = new HZH_Controls.Controls.UCStep();
+            this.label9 = new System.Windows.Forms.Label();
+            this.Cds = new HZH_Controls.Controls.TextBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.oriData.SuspendLayout();
             this.ReverseBox.SuspendLayout();
@@ -308,7 +311,7 @@
             this.oriData.Controls.Add(this.PD);
             this.oriData.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.oriData.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.oriData.Location = new System.Drawing.Point(40, 114);
+            this.oriData.Location = new System.Drawing.Point(438, 204);
             this.oriData.Name = "oriData";
             this.oriData.Size = new System.Drawing.Size(969, 200);
             this.oriData.TabIndex = 31;
@@ -317,6 +320,8 @@
             // 
             // ReverseBox
             // 
+            this.ReverseBox.Controls.Add(this.Cds);
+            this.ReverseBox.Controls.Add(this.label9);
             this.ReverseBox.Controls.Add(this.S);
             this.ReverseBox.Controls.Add(this.label8);
             this.ReverseBox.Controls.Add(this.c);
@@ -325,9 +330,9 @@
             this.ReverseBox.Controls.Add(this.label6);
             this.ReverseBox.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ReverseBox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.ReverseBox.Location = new System.Drawing.Point(40, 339);
+            this.ReverseBox.Location = new System.Drawing.Point(438, 434);
             this.ReverseBox.Name = "ReverseBox";
-            this.ReverseBox.Size = new System.Drawing.Size(969, 132);
+            this.ReverseBox.Size = new System.Drawing.Size(969, 149);
             this.ReverseBox.TabIndex = 32;
             this.ReverseBox.TabStop = false;
             this.ReverseBox.Text = "反演结果";
@@ -338,7 +343,7 @@
             this.S.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.S.ForeColor = System.Drawing.SystemColors.WindowText;
             this.S.InputType = HZH_Controls.TextInputType.NotControl;
-            this.S.Location = new System.Drawing.Point(825, 54);
+            this.S.Location = new System.Drawing.Point(707, 53);
             this.S.MaxValue = new decimal(new int[] {
             1000000,
             0,
@@ -357,7 +362,7 @@
             this.S.PromptText = "";
             this.S.ReadOnly = true;
             this.S.RegexPattern = "";
-            this.S.Size = new System.Drawing.Size(101, 33);
+            this.S.Size = new System.Drawing.Size(178, 33);
             this.S.TabIndex = 30;
             // 
             // label8
@@ -365,7 +370,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label8.Location = new System.Drawing.Point(668, 55);
+            this.label8.Location = new System.Drawing.Point(533, 54);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(151, 28);
             this.label8.TabIndex = 29;
@@ -377,7 +382,7 @@
             this.c.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.c.ForeColor = System.Drawing.SystemColors.WindowText;
             this.c.InputType = HZH_Controls.TextInputType.NotControl;
-            this.c.Location = new System.Drawing.Point(539, 54);
+            this.c.Location = new System.Drawing.Point(256, 101);
             this.c.MaxValue = new decimal(new int[] {
             1000000,
             0,
@@ -396,7 +401,7 @@
             this.c.PromptText = "";
             this.c.ReadOnly = true;
             this.c.RegexPattern = "";
-            this.c.Size = new System.Drawing.Size(101, 33);
+            this.c.Size = new System.Drawing.Size(176, 33);
             this.c.TabIndex = 28;
             // 
             // label7
@@ -404,7 +409,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label7.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label7.Location = new System.Drawing.Point(381, 55);
+            this.label7.Location = new System.Drawing.Point(30, 101);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(152, 28);
             this.label7.TabIndex = 27;
@@ -435,7 +440,7 @@
             this.kh.PromptText = "";
             this.kh.ReadOnly = true;
             this.kh.RegexPattern = "";
-            this.kh.Size = new System.Drawing.Size(101, 33);
+            this.kh.Size = new System.Drawing.Size(176, 33);
             this.kh.TabIndex = 26;
             // 
             // label6
@@ -500,7 +505,7 @@
             this.back.IsRadius = true;
             this.back.IsShowRect = false;
             this.back.IsShowTips = false;
-            this.back.Location = new System.Drawing.Point(928, 895);
+            this.back.Location = new System.Drawing.Point(1309, 852);
             this.back.Margin = new System.Windows.Forms.Padding(0);
             this.back.Name = "back";
             this.back.RectColor = System.Drawing.Color.White;
@@ -513,6 +518,69 @@
             this.back.TipsText = "";
             this.back.BtnClick += new System.EventHandler(this.back_BtnClick);
             // 
+            // ucStep1
+            // 
+            this.ucStep1.BackColor = System.Drawing.SystemColors.Control;
+            this.ucStep1.CausesValidation = false;
+            this.ucStep1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ucStep1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ucStep1.ImgCompleted = null;
+            this.ucStep1.LineWidth = 2;
+            this.ucStep1.Location = new System.Drawing.Point(739, 810);
+            this.ucStep1.Name = "ucStep1";
+            this.ucStep1.Size = new System.Drawing.Size(407, 110);
+            this.ucStep1.StepBackColor = System.Drawing.Color.Transparent;
+            this.ucStep1.StepFontColor = System.Drawing.Color.White;
+            this.ucStep1.StepForeColor = System.Drawing.SystemColors.Highlight;
+            this.ucStep1.StepIndex = 0;
+            this.ucStep1.Steps = new string[] {
+        "载入原始数据",
+        "粗拟合",
+        "细拟合",
+        "反演结果"};
+            this.ucStep1.StepWidth = 35;
+            this.ucStep1.TabIndex = 38;
+            this.ucStep1.IndexChecked += new System.EventHandler(this.ucStep1_IndexChecked);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label9.Location = new System.Drawing.Point(468, 101);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(204, 28);
+            this.label9.TabIndex = 31;
+            this.label9.Text = "组合参数(Cd*e^2S)";
+            // 
+            // Cds
+            // 
+            this.Cds.DecLength = 4;
+            this.Cds.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Cds.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.Cds.InputType = HZH_Controls.TextInputType.NotControl;
+            this.Cds.Location = new System.Drawing.Point(707, 100);
+            this.Cds.MaxValue = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.Cds.MinValue = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.Cds.MyRectangle = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.Cds.Name = "Cds";
+            this.Cds.OldText = null;
+            this.Cds.PromptColor = System.Drawing.Color.Gray;
+            this.Cds.PromptFont = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.Cds.PromptText = "";
+            this.Cds.ReadOnly = true;
+            this.Cds.RegexPattern = "";
+            this.Cds.Size = new System.Drawing.Size(178, 33);
+            this.Cds.TabIndex = 32;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -520,6 +588,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.ucStep1);
             this.Controls.Add(this.back);
             this.Controls.Add(this.openFile);
             this.Controls.Add(this.ReverseBox);
@@ -565,6 +634,9 @@
         private System.Windows.Forms.Label label6;
         private HZH_Controls.Controls.UCBtnImg openFile;
         private HZH_Controls.Controls.UCBtnImg back;
+        private HZH_Controls.Controls.UCStep ucStep1;
+        private HZH_Controls.Controls.TextBoxEx Cds;
+        private System.Windows.Forms.Label label9;
     }
 }
 

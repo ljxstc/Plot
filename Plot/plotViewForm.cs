@@ -34,6 +34,7 @@ namespace Plot
             this.plotView1.Model = plotModel;
             formLocation.X = PlotPointData.screenPoint.X + 120;
             formLocation.Y = PlotPointData.screenPoint.Y + 183;
+            
         }
 
 
@@ -74,7 +75,6 @@ namespace Plot
                     PlotPointData.CurX = mPoint.X;
                     PlotPointData.CurY = mPoint.Y;
                     this.Close();
-                    
                 };
 
             }
@@ -128,11 +128,24 @@ namespace Plot
                 string msg = "是否完成曲线拟合？";
                 string cation = "注意";
                 var result = MessageBox.Show(msg, cation, buttons);
+                //var result = FrmDialog.ShowDialog(this, msg, cation, true);
                 if (result == DialogResult.Yes)
                 {
-                    isDrag = false;
-                    this.Location = formLocation;
-                    MessageBox.Show("请选择右侧曲线中合适的图版曲线，完成粗拟合", "提示");
+                    if (PlotPointData.formName == 0)
+                    {
+                        isDrag = false;
+                        this.Location = formLocation;
+                        MessageBox.Show("请选择右侧曲线中合适的图版曲线，完成粗拟合", "提示");
+                        //FrmDialog.ShowDialog(this, "请选择右侧曲线中合适的图版曲线，完成粗拟合", "提示");
+                    }
+                    else
+                    {
+                        isDrag = false;
+                        MessageBox.Show("请选择右侧曲线中合适的“压力导数”图版曲线，进行细拟合", "提示");
+                        //FrmDialog.ShowDialog(this, "请选择右侧曲线中合适的“压力导数”图版曲线，进行细拟合", "提示");
+                        chosePoint1 = true;
+                    }
+                    
                     //MessageBox.Show("请点击曲线上的点进行拟合", "提示");
                     //chosePoint1 = true;
                 }

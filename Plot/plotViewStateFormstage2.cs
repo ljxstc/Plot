@@ -25,6 +25,7 @@ namespace Plot
             CheckForIllegalCrossThreadCalls = false;
             index = selectIndex;
 
+            MessageBox.Show("请重新拖动原始数据曲线，进行细拟合", "提示");
 
 
 
@@ -34,9 +35,10 @@ namespace Plot
             {
                 PlotPointData.formName = 1;
 
-                string[] dataPath = { "plotdata\\CdS=0.1.csv" ,
+                string[] dataPath = {  "plotdata\\CdS=0.1.csv" ,
                 "plotdata\\CdS=0.3.csv",
                 "plotdata\\CdS=1.csv",
+                "plotdata\\CdS=2.3.csv",
                 "plotdata\\CdS=3.csv",
                 "plotdata\\CdS=11.csv",
                 "plotdata\\CdS=2.csv",
@@ -44,9 +46,11 @@ namespace Plot
                 "plotdata\\CdS=4.csv",
                 "plotdata\\CdS=6.csv",
                 "plotdata\\CdS=8.csv",
+                "plotdata\\CdS=9.csv",
                 "plotdata\\CdS=12.csv",
                 "plotdata\\CdS=15.csv",
                 "plotdata\\CdS=20.csv",
+                "plotdata\\CdS=26.csv",
                 "plotdata\\CdS=30.csv",
                 "plotdata\\CdS=40.csv",
                 "plotdata\\CdS=50.csv",
@@ -72,7 +76,10 @@ namespace Plot
                     OxyColors.Yellow,
                     OxyColors.Orange,
                     OxyColors.DeepSkyBlue,
-                    OxyColors.PaleGreen
+                    OxyColors.PaleGreen,
+                    OxyColors.BlanchedAlmond,
+                    OxyColors.Olive,
+                    OxyColors.YellowGreen
                                     };
 
                 int name = PlotPointData.name;
@@ -87,7 +94,7 @@ namespace Plot
                         newColors[0] = colors[name];
                         newColors[1] = colors[name+1];
                     }
-                    else if (name == 16)
+                    else if (name == 20)
                     {
                         newDataPath[0] = dataPath[name-1];
                         newDataPath[1] = dataPath[name];

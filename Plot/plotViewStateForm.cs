@@ -33,24 +33,13 @@ namespace Plot
             if (index == 0)
             {
                 PlotPointData.formName = 0;
-                string[] dataPath = { "plotdata\\CdS=0.1.csv" ,
-                "plotdata\\CdS=0.3.csv",
-                "plotdata\\CdS=1.csv",
-                "plotdata\\CdS=3.csv",
-                "plotdata\\CdS=11.csv",
-                "plotdata\\CdS=2.csv",
-                "plotdata\\CdS=3.csv",
-                "plotdata\\CdS=4.csv",
-                "plotdata\\CdS=6.csv",
-                "plotdata\\CdS=8.csv",
-                "plotdata\\CdS=12.csv",
-                "plotdata\\CdS=15.csv",
-                "plotdata\\CdS=20.csv",
-                "plotdata\\CdS=30.csv",
-                "plotdata\\CdS=40.csv",
-                "plotdata\\CdS=50.csv",
-                "plotdata\\CdS=60.csv"
-                };
+                string[] CdS_str = { "0.1", "0.3", "1", "2.3", "3", "11", "2", "3", "4",
+                    "6", "8", "9", "12", "15", "20", "26", "30", "40", "50", "60"};
+                string[] dataPath = new string[20];
+                for (int i = 0; i < dataPath.Length; i++)
+                {
+                    dataPath[i] = $"plotdata\\CdS={CdS_str[i]}.csv";
+                }               
                 string[] timePath = {
                 "plotdata\\t.csv",
                 "plotdata\\td.csv"
@@ -71,7 +60,10 @@ namespace Plot
                     OxyColors.Yellow,
                     OxyColors.Orange,
                     OxyColors.DeepSkyBlue,
-                    OxyColors.PaleGreen
+                    OxyColors.PaleGreen,
+                    OxyColors.BlanchedAlmond,
+                    OxyColors.Olive,
+                    OxyColors.YellowGreen
                                     };
                 plotModel = PlotModelExamples.multidataLine(dataPath, timePath, colors, ref lists);
                 PlotModelExamples.plotEvent(lists, plotModel);
@@ -105,24 +97,44 @@ namespace Plot
             }
             else if (index == 2)
             {
-                //string[] dataPath = {
-                //"D:\\压力反演\\PC=1S=10.csv"};
-                //OxyColor[] colors = {OxyColors.Red,
-                //OxyColors.Blue,
-                //OxyColors.Automatic,
-                //OxyColors.Automatic,
-                //OxyColors.Automatic,
-                //OxyColors.Automatic,
-                //OxyColors.Automatic,
-                //OxyColors.Automatic,
-                //OxyColors.Automatic};
-                ////List<LineSeries> list = TrackerExamples.dataLine(dataPath, OxyColors.Red);
-                ////PlotModel plot1 = TrackerExamples.plotCurveLine(list);
-                //plotModel = PlotModelExamples.multidataLine(dataPath, colors, backgroundWorker1, ref lists);
-                //ucProcessLine1.Hide();
-                //label1.Hide();
-                //PlotModelExamples.plotEvent(lists, plotModel);
-                //this.plotView1.Model = plotModel;
+                PlotPointData.formName = 0;
+                string[] CdS_str = { "0.1", "0.3", "1", "2.3", "3", "11", "2", "3", "4",
+                    "6", "8", "9", "12", "15", "20", "26", "30", "40", "50", "60"};
+                string[] dataPathCdS = new string[20];
+                for (int i = 0; i < dataPathCdS.Length; i++)
+                {
+                    dataPathCdS[i] = $"plotdata\\CdS={CdS_str[i]}.csv";
+                }
+                string[] timePathCds = {
+                "plotdata\\t.csv",
+                "plotdata\\td.csv"
+                };
+
+                OxyColor[] colors = {OxyColors.Red,
+                    OxyColors.Black,
+                    OxyColors.Blue,
+                    OxyColors.Pink,
+                    OxyColors.BlueViolet,
+                    OxyColors.Brown,
+                    OxyColors.Aqua,
+                    OxyColors.AliceBlue,
+                    OxyColors.RosyBrown,
+                    OxyColors.IndianRed,
+                    OxyColors.Gold,
+                    OxyColors.Green,
+                    OxyColors.Gray,
+                    OxyColors.Yellow,
+                    OxyColors.Orange,
+                    OxyColors.DeepSkyBlue,
+                    OxyColors.PaleGreen,
+                    OxyColors.BlanchedAlmond,
+                    OxyColors.Olive,
+                    OxyColors.YellowGreen
+                                    };
+                plotModel = PlotModelExamples.multidataLine(dataPathCdS, timePath, colors, ref lists);
+                PlotModelExamples.plotEvent(lists, plotModel);
+                //plotModel = PlotModelExamples.AbsoluteMaximum();
+                this.plotView1.Model = plotModel;
             }
 
 
@@ -141,6 +153,7 @@ namespace Plot
             {
                 MessageBox.Show($"已获取曲线值:{PlotPointData.StdX},{PlotPointData.StdY}" +
                     $"选取的曲线条：{PlotPointData.name}");
+
                 this.Close();
             }
         }

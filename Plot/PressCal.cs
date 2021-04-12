@@ -104,10 +104,11 @@ namespace Plot
             //表皮系数
             double Cds = cdS(name);
             double s = 0.5 * Math.Log(Cds / cd);
-            double[] result = new double[3];
+            double[] result = new double[4];
             result[0] = kh;
             result[1] = c;
             result[2] = s;
+            result[3] = Cds;
             return result;
 
         }
@@ -119,8 +120,8 @@ namespace Plot
         /// <returns></returns>
         public static double cdS(int name)
         {
-            double [] cdS = { 0.1, 0.1, 0.3, 0.3, 1, 1, 3, 3, 10, 10, 100, 100, 1000, 1000,
-                1e4, 1e4,1e6,1e6, 1e8,1e8, 1e10,1e10, 1e15,1e15, 1e20,1e20, 1e30, 1e30,1e40, 1e40,1e50,1e50, 1e60 ,1e60};
+            double [] cdS = { 0.1, 0.3, 2.3, 1, 3, 10, 100, 1000,
+                 1e4,1e6, 1e8,  4e9,1e10, 1e15, 1e20,  4e26,  1e30, 1e40,1e50,1e60};
             double cdS_r;
             cdS_r = cdS[name];            
             return cdS_r;
